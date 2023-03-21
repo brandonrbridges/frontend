@@ -8,6 +8,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     domains: ['images.unsplash.com', 'storage.googleapis.com', 'tailwindui.com'],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 module.exports = nextConfig

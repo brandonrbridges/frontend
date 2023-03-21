@@ -1,12 +1,13 @@
 import LoginForm from '@/components/LoginForm'
 import SocialLogin from '@/components/SocialLogin'
+import Image from 'next/image'
 
 export default async function Page() {
   return (
     <>
       <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
-          <img
+          <Image
             className='mx-auto h-12 w-auto'
             src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
             alt='Your Company'

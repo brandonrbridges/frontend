@@ -1,6 +1,7 @@
 'use client'
 
 import { IconChevronRight, IconBookmark, IconBook, IconList } from '@tabler/icons-react'
+import Image from 'next/image'
 
 const links = [
   {
@@ -70,7 +71,7 @@ export default function NotFound() {
   return (
     <div className='bg-white'>
       <main className='mx-auto w-full max-w-7xl px-6 pt-10 pb-16 sm:pb-24 lg:px-8'>
-        <img
+        <Image
           className='mx-auto h-10 w-auto sm:h-12'
           src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
           alt='Your Company'
