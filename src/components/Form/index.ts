@@ -1,4 +1,5 @@
 import DropdownInput from './DropdownInput'
+import Label from './Label'
 import TextInput from './TextInput'
 
-export { DropdownInput, TextInput }
+export { DropdownInput, Label, TextInput }

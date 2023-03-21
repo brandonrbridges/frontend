@@ -23,7 +23,7 @@ async function getData(id) {
   })
 
   const tasks = await fetcher.GET(`/tasks`, {
-    property_id: property._id,
+    property_id: id,
   })
 
   return { user, property, tasks }

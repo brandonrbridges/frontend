@@ -1,6 +1,8 @@
 import AccountingStats from './AccountingStats'
+import * as Charts from './Charts'
 import Panel from './Panel'
 import PropertiesTable from './PropertiesTable'
+import PropertyForm from './PropertyForm'
 import PropertyInfo from './PropertyInfo'
 import SettingsForm from './SettingsForm'
 import Stats from './Stats'
@@ -15,8 +17,10 @@ import UI from './UI'
 
 export {
   AccountingStats,
+  Charts,
   Panel,
   PropertiesTable,
+  PropertyForm,
   PropertyInfo,
   SettingsForm,
   Stats,

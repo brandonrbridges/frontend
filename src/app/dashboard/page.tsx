@@ -10,6 +10,9 @@ import Alert from '@/components/Alert'
 import { Panel, PropertiesTable, Stats } from '@/components/Dashboard'
 import { IconBuilding, IconChecklist, IconUsers } from '@tabler/icons-react'
 
+import { ResponsivePieCanvas } from '@nivo/pie'
+import { PieChart } from '@/components/Dashboard/Charts'
+
 async function getData() {
   const { user } = await getServerSession(authOptions)
 
@@ -61,9 +64,11 @@ export default async function Page() {
             },
           ]}
         />
-        <Panel>
-          <PropertiesTable />
-        </Panel>
+        <div className='gap-8 grid grid-cols-3'>
+          <Panel className='col-span-2'>
+            <PropertiesTable />
+          </Panel>
+        </div>
       </>
     )
   }
