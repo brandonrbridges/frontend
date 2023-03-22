@@ -94,7 +94,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
           />
 
           <AddressAutofill accessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY?.toString()}>
-            <div className='space-y-6 sm:space-y-5'>
+            <div className='space-y-6 sm:space-y-5 mt-6'>
               <FormRow
                 label={<Label htmlFor='address.line_1'>Line 1</Label>}
                 input={

@@ -43,6 +43,7 @@ export default async function Page({ params }) {
           <PropertyInfo property={property} />
         </Panel>
         <div className='col-span-2 space-y-6'>
+          <TenantCard user={property.user} />
           <TenantCard user={property.tenant} />
           <Panel>
             <TaskList tasks={tasks} />
