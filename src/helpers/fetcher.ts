@@ -6,7 +6,6 @@ const GET = async (url: string, query?: any): Promise<object> => {
     headers: {
       'Content-Type': 'application/json',
     },
-    cache: 'no-store',
   }
 
   const params: string = query ? '?' + new URLSearchParams(query).toString() : ''
