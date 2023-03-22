@@ -28,15 +28,26 @@ export async function getData(id: string, user_id: string) {
   const data = await fetcher.GET(`/tasks/${id}`)
   const landlord = await fetcher.GET(`/users/${data.landlord_id}`)
   const messages = await fetcher.GET(`/tasks/${id}/messages`)
+  const history = await fetcher.GET(`/tasks/${id}/update-history`)
   const property = await fetcher.GET(`/properties/${data.property_id}`)
   const tenant = await fetcher.GET(`/users/${property.tenant_id}`)
 
-  return { data, author, landlord, messages, property, tenant }
+  return { data, author, landlord, messages, history, property, tenant }
 }
 
 export default async function Page({ params: { id } }) {
   const { user } = await getServerSession(authOptions)
-  const { data: task, author, landlord, messages, property, tenant } = await getData(id, user._id)
+  const {
+    data: task,
+    author,
+    landlord,
+    messages,
+    history,
+    property,
+    tenant,
+  } = await getData(id, user._id)
+
+  if (!task) return <p>We are having an issue fetching your data</p>
 
   return (
     <>
@@ -94,7 +105,7 @@ export default async function Page({ params: { id } }) {
           <TenantCard user={tenant} />
           <TenantCard user={landlord} />
           <Panel>
-            <TaskTimeline id={task._id} />
+            <TaskTimeline data={history} />
           </Panel>
         </div>
       </div>

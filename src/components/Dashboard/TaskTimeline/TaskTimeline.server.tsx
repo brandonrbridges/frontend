@@ -7,7 +7,7 @@ import { IconCalendar } from '@tabler/icons-react'
 export const TaskTimelineUpdate = ({ update, length, index }) => {
   return (
     <li key={index}>
-      <div className='relative pb-8'>
+      <div className='relative py-4'>
         {index !== length - 1 ? (
           <span
             className='absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200'
