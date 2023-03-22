@@ -48,6 +48,7 @@ export default async function Page({ params }) {
           <Panel>
             <TaskList tasks={tasks} />
           </Panel>
+          <button>Evict {property.tenant.first_name}</button>
         </div>
       </div>
     </>

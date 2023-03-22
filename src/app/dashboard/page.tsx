@@ -16,9 +16,17 @@ import { PieChart } from '@/components/Dashboard/Charts'
 async function getData() {
   const { user } = await getServerSession(authOptions)
 
-  const properties = (await fetcher.GET('/properties', {
-    user_id: user._id,
-  })) as []
+  let properties
+
+  if (user.roles.includes('landlord')) {
+    properties = (await fetcher.GET('/properties', {
+      user_id: user._id,
+    })) as []
+  } else {
+    properties = (await fetcher.GET('/properties', {
+      tenant_id: user._id,
+    })) as []
+  }
 
   const tenants = (await fetcher.GET('/tenants', {
     user_id: user._id,
@@ -74,30 +82,11 @@ export default async function Page() {
   }
 
   if (user.roles.includes('tenant')) {
+    const property = properties[0]
+
     return (
       <>
-        <Stats
-          statistics={[
-            {
-              name: 'Properties',
-              value: properties.length,
-              icon: IconBuilding,
-              href: '/dashboard/properties',
-            },
-            {
-              name: 'Tenants',
-              value: tenants.length,
-              icon: IconUsers,
-              href: '/dashboard/tenants',
-            },
-            {
-              name: 'Tasks',
-              value: tasks.length,
-              icon: IconChecklist,
-              href: '/dashboard/tasks',
-            },
-          ]}
-        />
+        <Panel>{property.address.line_1}</Panel>
       </>
     )
   }

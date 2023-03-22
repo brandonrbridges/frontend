@@ -176,7 +176,21 @@ export default function UI({ children, user }: { children: React.ReactNode; user
         </div>
 
         <main className='-mt-32'>
-          <div className='mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 space-y-8'>{children}</div>
+          <div className='mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 space-y-8'>
+            {children}
+            <div className=''>
+              <p className='font-medium text-gray-400 text-xs'>
+                &copy; 2023 Hello Home, Inc. All rights reserved.
+              </p>
+              <ul className='flex items-center mt-6 space-x-6 text-xs'>
+                <li>
+                  <Link href='/' className='text-gray-500 hover:text-gray-800'>
+                    Homepage
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </main>
       </div>
     </>

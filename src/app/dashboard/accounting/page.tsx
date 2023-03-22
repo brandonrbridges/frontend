@@ -9,6 +9,8 @@ export default async function Page() {
   return (
     <>
       <AccountingStats />
+
+      <Panel>form</Panel>
     </>
   )
 }

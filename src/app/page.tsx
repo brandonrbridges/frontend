@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { IconMenu, IconX } from '@tabler/icons-react'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -202,9 +203,9 @@ export default function Example() {
             ))}
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-            <a href='#' className='text-sm font-semibold leading-6 text-gray-900'>
+            <Link href='/auth/login' className='text-sm font-semibold leading-6 text-gray-900'>
               Log in <span aria-hidden='true'>&rarr;</span>
-            </a>
+            </Link>
           </div>
         </nav>
         <Dialog as='div' className='lg:hidden' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
