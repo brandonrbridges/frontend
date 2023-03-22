@@ -22,6 +22,7 @@ specifiers:
   react-chartjs-2: ^5.2.0
   react-dom: 18.2.0
   react-hook-form: ^7.43.3
+  react-type-animation: ^3.0.1
   recharts: ^2.5.0
   sass: ^1.58.3
   tailwindcss: ^3.2.7
@@ -45,6 +46,7 @@ dependencies:
   react-chartjs-2: 5.2.0_t5yjg6ab35jnsudnh2qdighszm
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.43.3_react@18.2.0
+  react-type-animation: 3.0.1_v2m5e27vhdewzwhryxwfaorcca
   recharts: 2.5.0_v2m5e27vhdewzwhryxwfaorcca
   sass: 1.58.3
 
@@ -2585,6 +2587,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-lifecycles-compat: 3.0.4
+    dev: false
+
+  /react-type-animation/3.0.1_v2m5e27vhdewzwhryxwfaorcca:
+    resolution: {integrity: sha512-n6erVzng071lN8A0UbNT9Q7m5D6puaa9OE1lakwu5UKxMkEnUbjs2MLT3jN/SUjuxNtKmDP2GqJKb3uQ5wZNkQ==}
+    peerDependencies:
+      prop-types: ^15.5.4
+      react: '>= 15.0.0'
+      react-dom: '>= 15.0.0'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:

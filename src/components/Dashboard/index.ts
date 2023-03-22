@@ -1,4 +1,5 @@
 import AccountingStats from './AccountingStats'
+import AIAssistant from './AIAssistant'
 import * as Charts from './Charts'
 import Panel from './Panel'
 import PropertiesTable from './PropertiesTable'
@@ -17,6 +18,7 @@ import UI from './UI'
 
 export {
   AccountingStats,
+  AIAssistant,
   Charts,
   Panel,
   PropertiesTable,

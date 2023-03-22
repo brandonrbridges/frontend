@@ -20,10 +20,6 @@ export const generateLinks = (user: UserProps): LinkProps[] => {
         href: '/dashboard/tenants',
       },
       {
-        name: 'Tasks',
-        href: '/dashboard/tasks',
-      },
-      {
         name: 'Accounting',
         href: '/dashboard/accounting',
       }
@@ -31,11 +27,24 @@ export const generateLinks = (user: UserProps): LinkProps[] => {
   }
 
   if (user.roles.includes('tenant')) {
-    links.push({
+    // links.push(
+    //   {
+    //     name: '',
+    //     href: '/dashboard/',
+    //   },
+    // )
+  }
+
+  links.push(
+    {
       name: 'Tasks',
       href: '/dashboard/tasks',
-    })
-  }
+    },
+    {
+      name: 'AI Assistant',
+      href: '/dashboard/ai-assistant',
+    }
+  )
 
   return links
 }
