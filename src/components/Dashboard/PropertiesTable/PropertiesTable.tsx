@@ -8,7 +8,7 @@ import { getData } from './PropertiesTable.helpers'
 import { AddPropertyButton } from './PropertiesTable.client'
 
 // Server Components
-import { Table, TableDescription } from './PropertiesTable.server'
+import { AddButton, Table, TableDescription } from './PropertiesTable.server'
 
 const PropertiesTable = async () => {
   const { properties } = await getData()
@@ -18,7 +18,7 @@ const PropertiesTable = async () => {
       <div className='sm:flex sm:items-center'>
         <TableDescription />
         <div className='mt-4 sm:mt-0 sm:ml-16 sm:flex-none'>
-          <AddPropertyButton />
+          <AddButton />
         </div>
       </div>
       <Suspense fallback={<div>Loading...</div>}>

@@ -13,7 +13,11 @@ import { fetcher } from '@/helpers'
 import Button from '@/components/Button'
 import { DropdownInput, Label, TextInput } from '@/components/Form'
 
+// Client Components
+import { PropertyMap } from './PropertyForm.client'
+
 // Modules
+import { AddressAutofill } from '@mapbox/search-js-react'
 import { Controller, useForm } from 'react-hook-form'
 
 const PropertyForm = ({ user_id }: { user_id: string }) => {
@@ -26,6 +30,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
   } = useForm({
     defaultValues: {
       name: '',
+      lookup: '',
       address: {
         line_1: '',
         line_2: '',
@@ -36,6 +41,8 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
       type: '',
       bedrooms: '',
       bathrooms: '',
+      rent: undefined,
+      deposit: undefined,
     },
   })
 
@@ -69,6 +76,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
                     <TextInput
                       {...field}
                       placeholder='e.g. My first home'
+                      description='It is only visible to you. It will appear within your dashboard as this name instead of the first line of the address.'
                       error={errors.name?.message}
                     />
                   )}
@@ -85,92 +93,101 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
               Letting Agency and your tenants.'
           />
 
-          <div className='space-y-6 sm:space-y-5'>
-            <FormRow
-              label={<Label htmlFor='address.line_1'>Line 1</Label>}
-              input={
-                <Controller
-                  control={control}
-                  name='address.line_1'
-                  render={({ field }) => (
-                    <TextInput
-                      {...field}
-                      placeholder='e.g. 123 Main Street'
-                      error={errors.address?.line_1?.message}
-                    />
-                  )}
-                />
-              }
-            />
+          <AddressAutofill accessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY?.toString()}>
+            <div className='space-y-6 sm:space-y-5'>
+              <FormRow
+                label={<Label htmlFor='address.line_1'>Line 1</Label>}
+                input={
+                  <Controller
+                    control={control}
+                    name='address.line_1'
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        autoComplete='address-line1'
+                        placeholder='e.g. 123 Main Street'
+                        error={errors.address?.line_1?.message}
+                      />
+                    )}
+                  />
+                }
+              />
 
-            <FormRow
-              label={<Label htmlFor='address.line_2'>Line 2</Label>}
-              input={
-                <Controller
-                  control={control}
-                  name='address.line_2'
-                  render={({ field }) => (
-                    <TextInput
-                      {...field}
-                      placeholder='e.g. Optional'
-                      error={errors.address?.line_2?.message}
-                    />
-                  )}
-                />
-              }
-            />
+              <FormRow
+                label={<Label htmlFor='address.line_2'>Line 2</Label>}
+                input={
+                  <Controller
+                    control={control}
+                    name='address.line_2'
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        autoComplete='address-line2'
+                        placeholder='e.g. Optional'
+                        error={errors.address?.line_2?.message}
+                      />
+                    )}
+                  />
+                }
+              />
 
-            <FormRow
-              label={<Label htmlFor='address.city'>Town / City</Label>}
-              input={
-                <Controller
-                  control={control}
-                  name='address.city'
-                  render={({ field }) => (
-                    <TextInput
-                      {...field}
-                      placeholder='e.g. London'
-                      error={errors.address?.city?.message}
-                    />
-                  )}
-                />
-              }
-            />
+              <FormRow
+                label={<Label htmlFor='address.city'>Town / City</Label>}
+                input={
+                  <Controller
+                    control={control}
+                    name='address.city'
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        autoComplete='address-level2'
+                        placeholder='e.g. London'
+                        error={errors.address?.city?.message}
+                      />
+                    )}
+                  />
+                }
+              />
 
-            <FormRow
-              label={<Label htmlFor='address.county'>County</Label>}
-              input={
-                <Controller
-                  control={control}
-                  name='address.county'
-                  render={({ field }) => (
-                    <TextInput
-                      {...field}
-                      placeholder='e.g. Greater London'
-                      error={errors.address?.county?.message}
-                    />
-                  )}
-                />
-              }
-            />
+              <FormRow
+                label={<Label htmlFor='address.county'>County</Label>}
+                input={
+                  <Controller
+                    control={control}
+                    name='address.county'
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        autoComplete='address-level1'
+                        placeholder='e.g. Greater London'
+                        error={errors.address?.county?.message}
+                      />
+                    )}
+                  />
+                }
+              />
 
-            <FormRow
-              label={<Label htmlFor='address.postcode'>Postcode</Label>}
-              input={
-                <Controller
-                  control={control}
-                  name='address.postcode'
-                  render={({ field }) => (
-                    <TextInput
-                      {...field}
-                      placeholder='e.g. SW1A 1AA'
-                      error={errors.address?.postcode?.message}
-                    />
-                  )}
-                />
-              }
-            />
-          </div>
+              <FormRow
+                label={<Label htmlFor='address.postcode'>Postcode</Label>}
+                input={
+                  <Controller
+                    control={control}
+                    name='address.postcode'
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        autoComplete='postal-code'
+                        placeholder='e.g. SW1A 1AA'
+                        error={errors.address?.postcode?.message}
+                      />
+                    )}
+                  />
+                }
+              />
+
+              <PropertyMap />
+            </div>
+          </AddressAutofill>
         </div>
 
         <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10'>
@@ -228,6 +245,49 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
                     type='number'
                     placeholder='e.g. 2'
                     error={errors.bathrooms?.message}
+                  />
+                )}
+              />
+            }
+          />
+        </div>
+
+        <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10'>
+          <FormHeader
+            title='Rent and Deposit'
+            description='The rent and deposit for your property. This will only be visible to you, your chosen Letting Agency and your tenants.'
+          />
+
+          <FormRow
+            label={<Label htmlFor='rent'>Rent</Label>}
+            input={
+              <Controller
+                control={control}
+                name='rent'
+                render={({ field }) => (
+                  <TextInput
+                    {...field}
+                    type='number'
+                    placeholder='e.g. £650 / month'
+                    error={errors.rent?.message}
+                  />
+                )}
+              />
+            }
+          />
+
+          <FormRow
+            label={<Label htmlFor='deposit'>Deposit</Label>}
+            input={
+              <Controller
+                control={control}
+                name='deposit'
+                render={({ field }) => (
+                  <TextInput
+                    {...field}
+                    type='number'
+                    placeholder='e.g. £1150'
+                    error={errors.deposit?.message}
                   />
                 )}
               />

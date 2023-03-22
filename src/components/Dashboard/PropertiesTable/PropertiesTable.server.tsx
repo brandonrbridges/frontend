@@ -6,6 +6,15 @@ import type { Property } from './PropertiesTable.props'
 
 // Icons
 import { IconChevronDown } from '@tabler/icons-react'
+import Button from '@/components/Button'
+
+export const AddButton = () => {
+  return (
+    <Link href='/dashboard/properties/create'>
+      <Button>Add Property</Button>
+    </Link>
+  )
+}
 
 export const Table = ({ properties }: { properties: Property[] }) => {
   return (

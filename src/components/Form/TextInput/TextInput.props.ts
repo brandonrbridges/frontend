@@ -1,4 +1,5 @@
 export interface TextInputProps {
+  autoComplete?: string
   label?: string
   placeholder?: string
   description?: string
