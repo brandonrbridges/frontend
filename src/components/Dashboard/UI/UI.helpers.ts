@@ -4,7 +4,7 @@ export const generateLinks = (user: UserProps): LinkProps[] => {
   let links: Array<LinkProps> = [
     {
       name: 'Dashboard',
-      href: '/dashboard',
+      href: 'dashboard',
       current: true,
     },
   ]
@@ -13,15 +13,15 @@ export const generateLinks = (user: UserProps): LinkProps[] => {
     links.push(
       {
         name: 'Properties',
-        href: '/dashboard/properties',
+        href: 'dashboard/properties',
       },
       {
         name: 'Tenants',
-        href: '/dashboard/tenants',
+        href: 'dashboard/tenants',
       },
       {
         name: 'Accounting',
-        href: '/dashboard/accounting',
+        href: 'dashboard/accounting',
       }
     )
   }

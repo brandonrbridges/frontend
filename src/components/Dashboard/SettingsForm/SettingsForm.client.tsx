@@ -3,13 +3,20 @@
 // React
 import { FormEvent, useRef, useState } from 'react'
 
+// Next
+import { useRouter } from 'next/navigation'
+
+// Helpers
+import { fetcher } from '@/helpers'
+
 // Components
 import Button from '@/components/Button'
-import { fetcher } from '@/helpers'
 
 const HOST = process.env.NEXT_PUBLIC_API_URL
 
 export const PhotoUpload = ({ user }) => {
+  const router = useRouter()
+
   const photoRef = useRef<HTMLInputElement | null>(null)
 
   const [uploading, setUploading] = useState<Boolean>(false)
@@ -36,22 +43,20 @@ export const PhotoUpload = ({ user }) => {
       console.error(error)
     }
 
-    setTimeout(() => {
-      setUploading(false)
-    }, 1000)
+    router.refresh()
   }
 
   return (
-    <div className='sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
-      <label htmlFor='photo' className='block text-sm font-medium leading-6 text-gray-900'>
+    <div className='sm:border-t sm:border-gray-200 sm:grid sm:pt-5 sm:gap-4 sm:grid-cols-3 sm:items-center'>
+      <label htmlFor='photo' className='font-medium text-sm text-gray-900 leading-6 block'>
         Photo
       </label>
-      <div className='mt-2 sm:col-span-2 sm:mt-0'>
-        <div className='flex items-center space-x-4'>
-          <div className='bg-gray-300 h-10 relative rounded-full w-10'>{/* AVATAR HERE */}</div>
+      <div className='mt-2 sm:mt-0 sm:col-span-2'>
+        <div className='flex space-x-4 items-center'>
+          <div className='rounded-full bg-gray-300 h-10 w-10 relative'>{/* AVATAR HERE */}</div>
           <input
             type='file'
-            className='hidden ml-5 rounded-md bg-white py-1.5 px-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+            className='bg-white rounded-md font-semibold shadow-sm ring-inset text-sm ml-5 py-1.5 px-2.5 ring-1 ring-gray-300 text-gray-900 hidden hover:bg-gray-50'
             ref={photoRef}
             onChange={({ target: { files } }) => files?.length && handlePhotoUpload(files[0])}
           />
@@ -59,8 +64,8 @@ export const PhotoUpload = ({ user }) => {
           {!uploading ? (
             <Button onClick={() => photoRef && photoRef.current.click()}>Upload a Photo</Button>
           ) : (
-            <div className='flex items-center space-x-2'>
-              <div className='animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900'></div>
+            <div className='flex space-x-2 items-center'>
+              <div className='rounded-full border-b-2 border-gray-900 h-5 animate-spin w-5'></div>
               <p>Uploading...</p>
             </div>
           )}

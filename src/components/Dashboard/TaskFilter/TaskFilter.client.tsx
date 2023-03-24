@@ -14,7 +14,7 @@ export const ListItem = ({ children, item }) => {
 
   return (
     <Link
-      href={'/dashboard/tasks' + (item.status ? '?status=' + item.status : '')}
+      href={'dashboard/tasks' + (item.status ? '?status=' + item.status : '')}
       className={classNames(
         item.status === status
           ? 'bg-gray-100 text-gray-900'

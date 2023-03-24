@@ -24,7 +24,7 @@ import { IconBell } from '@tabler/icons-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 
-const userNavigation = [{ name: 'Settings', href: '/dashboard/settings' }]
+const userNavigation = [{ name: 'Settings', href: 'dashboard/settings' }]
 
 export default function UI({ children, user }: { children: React.ReactNode; user: UserProps }) {
   const current = usePathname()
@@ -86,7 +86,7 @@ export default function UI({ children, user }: { children: React.ReactNode; user
                                       'block hover:bg-gray-100 px-4 py-2 text-sm text-gray-700 text-left w-full'
                                     )}
                                   >
-                                    <Link href='/admin'>Admin Panel</Link>
+                                    <Link href='admin'>Admin Panel</Link>
                                   </Menu.Item>
                                 )}
 
@@ -152,7 +152,7 @@ export default function UI({ children, user }: { children: React.ReactNode; user
                     <div className='space-y-1 mt-3 px-2'>
                       {user.roles.includes('admin') && (
                         <Link
-                          href={'/admin'}
+                          href='admin'
                           className='rounded-md font-medium text-base py-2 px-3 text-gray-400 block hover:bg-gray-700 hover:text-white'
                         >
                           Admin Panel
@@ -174,11 +174,7 @@ export default function UI({ children, user }: { children: React.ReactNode; user
             )}
           </Disclosure>
 
-          <header className='py-10'>
-            <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-              <h1 className='font-bold text-white tracking-tight text-3xl'>Hi {user.first_name}</h1>
-            </div>
-          </header>
+          <div className='py-6' />
         </div>
 
         <main className='-mt-32'>

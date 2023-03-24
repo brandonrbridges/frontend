@@ -2,7 +2,7 @@ import {
   IconBrandFacebook,
   IconBrandGithub,
   IconBrandTwitter,
-  IconQuestionCircle,
+  IconQuestionMark,
 } from '@tabler/icons-react'
 
 interface SocialLoginProps {
@@ -27,14 +27,14 @@ const SocialLogin = (props: SocialLoginProps): React.ReactElement => {
       break
     default:
       name = 'Unknown Provider'
-      icon = <IconQuestionCircle />
+      icon = <IconQuestionMark />
   }
 
   return (
     <div>
       <a
         href='#'
-        className='inline-flex w-full justify-center rounded-md bg-white py-2 px-4 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0'
+        className='bg-white rounded-md shadow-sm ring-inset w-full py-2 px-4 ring-1 ring-gray-300 text-gray-500 inline-flex justify-center hover:bg-gray-50 focus:outline-offset-0'
       >
         <span className='sr-only'>Sign in with {name}</span>
         {icon}

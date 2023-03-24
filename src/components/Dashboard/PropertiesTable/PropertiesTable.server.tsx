@@ -10,7 +10,7 @@ import Button from '@/components/Button'
 
 export const AddButton = () => {
   return (
-    <Link href='/dashboard/properties/create'>
+    <Link href='dashboard/properties/create'>
       <Button>Add Property</Button>
     </Link>
   )
@@ -18,9 +18,9 @@ export const AddButton = () => {
 
 export const Table = ({ properties }: { properties: Property[] }) => {
   return (
-    <table className='min-w-full divide-y divide-gray-300'>
+    <table className='divide-y min-w-full divide-gray-300'>
       <TableHead />
-      <tbody className='divide-y divide-gray-200 bg-white'>
+      <tbody className='divide-y bg-white divide-gray-200'>
         {properties?.map((property: Property) => (
           <TableRow property={property} key={property._id} />
         ))}
@@ -32,7 +32,7 @@ export const Table = ({ properties }: { properties: Property[] }) => {
 export const TableDescription = () => {
   return (
     <div className='sm:flex-auto'>
-      <h1 className='text-base font-semibold leading-6 text-gray-900'>Properties</h1>
+      <h1 className='font-semibold text-base text-gray-900 leading-6'>Properties</h1>
       <p className='mt-2 text-sm text-gray-700'>A list of all the properties that you manage.</p>
     </div>
   )
@@ -44,46 +44,46 @@ const TableHead = () => {
       <tr>
         <th
           scope='col'
-          className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0'
+          className='font-semibold text-left text-sm py-3.5 pr-3 pl-4 text-gray-900 sm:pl-0'
         >
           <a href='#' className='group inline-flex'>
             Name / Address
-            <span className='invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible'>
+            <span className='rounded flex-none ml-2 text-gray-400 invisible group-hover:visible group-focus:visible'>
               <IconChevronDown className='h-5 w-5' aria-hidden='true' />
             </span>
           </a>
         </th>
-        <th scope='col' className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'>
+        <th scope='col' className='font-semibold text-left text-sm py-3.5 px-3 text-gray-900'>
           <a href='#' className='group inline-flex'>
             Postcode
-            <span className='ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200'>
+            <span className='rounded flex-none bg-gray-100 ml-2 text-gray-900 group-hover:bg-gray-200'>
               <IconChevronDown className='h-5 w-5' aria-hidden='true' />
             </span>
           </a>
         </th>
-        <th scope='col' className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'>
+        <th scope='col' className='font-semibold text-left text-sm py-3.5 px-3 text-gray-900'>
           <a href='#' className='group inline-flex'>
             Status
-            <span className='invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible'>
+            <span className='rounded flex-none ml-2 text-gray-400 invisible group-hover:visible group-focus:visible'>
               <IconChevronDown
-                className='invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible'
+                className='rounded flex-none h-5 ml-2 text-gray-400 w-5 invisible group-hover:visible group-focus:visible'
                 aria-hidden='true'
               />
             </span>
           </a>
         </th>
-        <th scope='col' className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'>
+        <th scope='col' className='font-semibold text-left text-sm py-3.5 px-3 text-gray-900'>
           <a href='#' className='group inline-flex'>
             Tenant
-            <span className='invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible'>
+            <span className='rounded flex-none ml-2 text-gray-400 invisible group-hover:visible group-focus:visible'>
               <IconChevronDown
-                className='invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible'
+                className='rounded flex-none h-5 ml-2 text-gray-400 w-5 invisible group-hover:visible group-focus:visible'
                 aria-hidden='true'
               />
             </span>
           </a>
         </th>
-        <th scope='col' className='relative py-3.5 pl-3 pr-0'>
+        <th scope='col' className='py-3.5 pr-0 pl-3 relative'>
           <span className='sr-only'>Edit</span>
         </th>
       </tr>
@@ -94,21 +94,22 @@ const TableHead = () => {
 const TableRow = ({ property }: { property: Property }) => {
   return (
     <tr>
-      <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0'>
+      <td className='font-medium text-sm py-4 pr-3 pl-4 text-gray-900 whitespace-nowrap sm:pl-0'>
         {property.name || property.address.line_1}
       </td>
-      <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+      <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>
         {property.address.postcode}
       </td>
-      <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>{property.status}</td>
-      <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+      <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>{property.status}</td>
+      <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>
         {property.tenant_id && property.tenant && (
           <>{property.tenant.first_name + ' ' + property.tenant.last_name}</>
         )}
       </td>
-      <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-0'>
+      <td className='text-right text-sm py-4 pr-4 pl-3 relative whitespace-nowrap sm:pr-0'>
         <Link
-          href={'/dashboard/properties/' + property._id}
+          href={'dashboard/properties/' + property._id}
+          as={'dashboard/properties/' + property._id}
           className='text-indigo-600 hover:text-indigo-900'
         >
           Edit

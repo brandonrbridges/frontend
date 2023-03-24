@@ -33,40 +33,44 @@ export default async function TaskList({ tasks }: { tasks: any }) {
 
   return (
     <>
-      <div className='sm:flex sm:items-center mb-8'>
+      <div className='mb-8 sm:flex sm:items-center'>
         <div className='sm:flex-auto'>
-          <h1 className='text-base font-semibold leading-6 text-gray-900'>Tasks</h1>
+          <h1 className='font-semibold text-base text-gray-900 leading-6'>Tasks</h1>
           <p className='mt-2 text-sm text-gray-700'>
             A list of all the tasks for the properties that you manage.
           </p>
         </div>
-        <div className='mt-4 sm:mt-0 sm:ml-16 sm:flex-none'>{/* <AddPropertyButton /> */}</div>
+        <div className='mt-4 sm:flex-none sm:mt-0 sm:ml-16'>{/* <AddPropertyButton /> */}</div>
       </div>
       <ul role='list' className='divide-y divide-gray-200'>
-        {tasks.length === 0 && <li className='text-gray-500 text-sm'>There are no open tasks</li>}
+        {tasks.length === 0 && <li className='text-sm text-gray-500'>There are no open tasks</li>}
 
         {tasks.map((task) => (
           <li key={task._id}>
-            <Link href={'/dashboard/tasks/' + task._id} className='block hover:bg-gray-50'>
-              <div className='flex items-center px-2 py-4'>
-                <div className='flex min-w-0 flex-1 items-center'>
+            <Link
+              href={'dashboard/tasks/' + task._id}
+              as={'dashboard/tasks/' + task._id}
+              className='block hover:bg-gray-50'
+            >
+              <div className='flex py-4 px-2 items-center'>
+                <div className='flex flex-1 min-w-0 items-center'>
                   <div className='flex-shrink-0'>
                     <Image
-                      className='h-12 w-12 rounded-full'
+                      className='rounded-full h-12 w-12'
                       src={task.user.avatar_url}
                       alt={`${task.user.first_name} ${task.user.last_name} Avatar`}
                       height='32'
                       width='32'
                     />
                   </div>
-                  <div className='min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4'>
+                  <div className='flex-1 min-w-0 px-4 md:grid md:gap-4 md:grid-cols-2'>
                     <div>
-                      <p className='truncate text-sm font-medium text-indigo-600'>
+                      <p className='font-medium text-sm text-indigo-600 truncate'>
                         {task.user.first_name} {task.user.last_name}
                       </p>
-                      <p className='mt-2 flex items-center text-sm text-gray-500'>
+                      <p className='flex mt-2 text-sm text-gray-500 items-center'>
                         <IconHome
-                          className='mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400'
+                          className='flex-shrink-0 h-5 mr-1.5 text-gray-400 w-5'
                           aria-hidden='true'
                         />
                         <span className='truncate'>
@@ -85,7 +89,7 @@ export default async function TaskList({ tasks }: { tasks: any }) {
                   </div>
                 </div>
                 <div>
-                  <IconChevronRight className='h-5 w-5 text-gray-400' aria-hidden='true' />
+                  <IconChevronRight className='h-5 text-gray-400 w-5' aria-hidden='true' />
                 </div>
               </div>
             </Link>

@@ -1,12 +1,20 @@
+// Types
 import type { NextAuthOptions, Session, User } from 'next-auth'
 import type { JWT } from 'next-auth/jwt'
 
+// Next
 import NextAuth from 'next-auth'
 
+// Providers
 import Credentials from 'next-auth/providers/credentials'
 
+// Helpers
+import { fetcher } from '@/helpers'
+
+// Modules
+import jwt from 'jsonwebtoken'
+
 export const authOptions: NextAuthOptions = {
-  debug: true,
   providers: [
     Credentials({
       name: 'Credentials',
@@ -49,10 +57,20 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    jwt: async ({ token, user }) => {
-      if (user) {
-        token = user
+    jwt: async ({ token }) => {
+      if (token) {
+        const { refreshToken } = token
+
+        const response = await fetcher.POST('/auth/refresh-token', {
+          token: refreshToken,
+        })
+
+        return {
+          ...token,
+          ...response,
+        }
       }
 
       return token
@@ -61,6 +79,14 @@ export const authOptions: NextAuthOptions = {
       session.user = token.user
 
       return session
+    },
+  },
+  jwt: {
+    encode: async ({ secret, token, maxAge }) => {
+      return jwt.sign(token, secret)
+    },
+    decode: async ({ secret, token }) => {
+      return jwt.verify(token, secret)
     },
   },
   pages: {
