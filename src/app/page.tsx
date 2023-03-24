@@ -166,9 +166,9 @@ export default function Example() {
   return (
     <div className='bg-white'>
       {/* Header */}
-      <header className='absolute inset-x-0 top-0 z-50'>
+      <header className='inset-x-0 top-0 z-50 absolute'>
         <nav
-          className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'
+          className='flex mx-auto max-w-7xl p-6 items-center justify-between lg:px-8'
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
@@ -184,7 +184,7 @@ export default function Example() {
           <div className='flex lg:hidden'>
             <button
               type='button'
-              className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
+              className='rounded-md -m-2.5 p-2.5 text-gray-700 inline-flex items-center justify-center'
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className='sr-only'>Open main menu</span>
@@ -196,21 +196,21 @@ export default function Example() {
               <a
                 key={item.name}
                 href={item.href}
-                className='text-sm font-semibold leading-6 text-gray-900'
+                className='font-semibold text-sm text-gray-900 leading-6'
               >
                 {item.name}
               </a>
             ))}
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-            <Link href='/auth/login' className='text-sm font-semibold leading-6 text-gray-900'>
+            <Link href='/auth/login' className='font-semibold text-sm text-gray-900 leading-6'>
               Log in <span aria-hidden='true'>&rarr;</span>
             </Link>
           </div>
         </nav>
         <Dialog as='div' className='lg:hidden' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-          <div className='fixed inset-0 z-50' />
-          <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
+          <div className='inset-0 z-50 fixed' />
+          <Dialog.Panel className='bg-white w-full py-6 px-6 inset-y-0 right-0 z-50 fixed overflow-y-auto sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
             <div className='flex items-center justify-between'>
               <a href='#' className='-m-1.5 p-1.5'>
                 <span className='sr-only'>Your Company</span>
@@ -222,7 +222,7 @@ export default function Example() {
               </a>
               <button
                 type='button'
-                className='-m-2.5 rounded-md p-2.5 text-gray-700'
+                className='rounded-md -m-2.5 p-2.5 text-gray-700'
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className='sr-only'>Close menu</span>
@@ -230,13 +230,13 @@ export default function Example() {
               </button>
             </div>
             <div className='mt-6 flow-root'>
-              <div className='-my-6 divide-y divide-gray-500/10'>
+              <div className='divide-y divide-gray-500/10 -my-6'>
                 <div className='space-y-2 py-6'>
                   {navigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
-                      className='-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                      className='rounded-lg font-semibold -mx-3 text-base py-2 px-3 text-gray-900 leading-7 block hover:bg-gray-50'
                     >
                       {item.name}
                     </a>
@@ -245,7 +245,7 @@ export default function Example() {
                 <div className='py-6'>
                   <a
                     href='#'
-                    className='-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                    className='rounded-lg font-semibold -mx-3 text-base py-2.5 px-3 text-gray-900 leading-7 block hover:bg-gray-50'
                   >
                     Log in
                   </a>
@@ -258,19 +258,19 @@ export default function Example() {
 
       <main className='isolate'>
         {/* Hero section */}
-        <div className='relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14'>
+        <div className='bg-gradient-to-b from-indigo-100/20 pt-14 -z-10 relative isolate overflow-hidden'>
           <div
-            className='absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96'
+            className='bg-white shadow-xl -mr-96 origin-top-right inset-y-0 right-1/2 shadow-indigo-600/10 ring-1 ring-indigo-50 w-[200%] -z-10 skew-x-[-30deg] absolute sm:-mr-80 lg:-mr-96'
             aria-hidden='true'
           />
-          <div className='mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8'>
-            <div className='mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8'>
-              <h1 className='max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto'>
+          <div className='mx-auto max-w-7xl py-32 px-6 sm:py-40 lg:px-8'>
+            <div className='mx-auto max-w-2xl lg:max-w-none lg:mx-0 lg:grid lg:gap-x-16 lg:gap-y-6 lg:grid-cols-2 xl:gap-x-8 xl:grid-cols-1 xl:grid-rows-1'>
+              <h1 className='font-bold tracking-tight max-w-2xl text-4xl text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto'>
                 We’re a passionate group of people working from around the world to build the future
                 of ecommerce.
               </h1>
-              <div className='mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1'>
-                <p className='text-lg leading-8 text-gray-600'>
+              <div className='max-w-xl mt-6 lg:mt-0 xl:col-end-1 xl:row-start-1'>
+                <p className='text-lg text-gray-600 leading-8'>
                   Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
                   commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna
                   aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
@@ -279,35 +279,35 @@ export default function Example() {
               <img
                 src='https://images.unsplash.com/photo-1567532900872-f4e906cbf06a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80'
                 alt=''
-                className='mt-10 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36'
+                className='max-w-lg object-cover rounded-2xl mt-10 w-full aspect-[6/5] sm:mt-16 lg:max-w-none lg:mt-0 xl:mt-36 xl:row-span-2 xl:row-end-2'
               />
             </div>
           </div>
-          <div className='absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32' />
+          <div className='bg-gradient-to-t from-white h-24 inset-x-0 bottom-0 -z-10 absolute sm:h-32' />
         </div>
 
         {/* Timeline section */}
         <div className='mx-auto -mt-8 max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4'>
+          <div className='mx-auto max-w-2xl grid gap-8 grid-cols-1 overflow-hidden lg:max-w-none lg:mx-0 lg:grid-cols-4'>
             {timeline.map((item) => (
               <div key={item.name}>
                 <time
                   dateTime={item.dateTime}
-                  className='flex items-center text-sm font-semibold leading-6 text-indigo-600'
+                  className='flex font-semibold text-sm text-indigo-600 leading-6 items-center'
                 >
-                  <svg viewBox='0 0 4 4' className='mr-4 h-1 w-1 flex-none' aria-hidden='true'>
+                  <svg viewBox='0 0 4 4' className='flex-none h-1 mr-4 w-1' aria-hidden='true'>
                     <circle cx={2} cy={2} r={2} fill='currentColor' />
                   </svg>
                   {item.date}
                   <div
-                    className='absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:ml-8 lg:-mr-6 lg:w-auto lg:flex-auto lg:translate-x-0'
+                    className='h-px bg-gray-900/10 -ml-2 w-screen -translate-x-full absolute sm:-ml-4 lg:flex-auto lg:-mr-6 lg:ml-8 lg:w-auto lg:translate-x-0 lg:static'
                     aria-hidden='true'
                   />
                 </time>
-                <p className='mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900'>
+                <p className='font-semibold mt-6 text-lg tracking-tight text-gray-900 leading-8'>
                   {item.name}
                 </p>
-                <p className='mt-1 text-base leading-7 text-gray-600'>{item.description}</p>
+                <p className='mt-1 text-base text-gray-600 leading-7'>{item.description}</p>
               </div>
             ))}
           </div>
@@ -315,45 +315,45 @@ export default function Example() {
 
         {/* Logo cloud */}
         <div className='mx-auto mt-32 max-w-7xl sm:mt-40 sm:px-6 lg:px-8'>
-          <div className='relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16'>
-            <h2 className='mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl'>
+          <div className='bg-gray-900 text-center py-24 px-6 shadow-2xl relative isolate overflow-hidden sm:rounded-3xl sm:px-16'>
+            <h2 className='font-bold mx-auto text-white tracking-tight max-w-2xl text-3xl sm:text-4xl'>
               Our customers love us
             </h2>
-            <p className='mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300'>
+            <p className='mx-auto max-w-xl mt-6 text-lg text-gray-300 leading-8'>
               Aliquip reprehenderit incididunt amet quis fugiat ut velit. Sit occaecat labore
               proident cillum in nisi adipisicing officia excepteur tempor deserunt.
             </p>
-            <div className='mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5'>
+            <div className='mx-auto max-w-lg mt-20 grid gap-x-8 gap-y-12 grid-cols-4 items-center sm:max-w-xl sm:gap-x-10 sm:gap-y-14 sm:grid-cols-6 lg:max-w-4xl lg:grid-cols-5'>
               <img
-                className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
+                className='object-contain w-full max-h-12 col-span-2 lg:col-span-1'
                 src='https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg'
                 alt='Transistor'
                 width={158}
                 height={48}
               />
               <img
-                className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
+                className='object-contain w-full max-h-12 col-span-2 lg:col-span-1'
                 src='https://tailwindui.com/img/logos/158x48/reform-logo-white.svg'
                 alt='Reform'
                 width={158}
                 height={48}
               />
               <img
-                className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
+                className='object-contain w-full max-h-12 col-span-2 lg:col-span-1'
                 src='https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg'
                 alt='Tuple'
                 width={158}
                 height={48}
               />
               <img
-                className='col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1'
+                className='object-contain w-full max-h-12 col-span-2 sm:col-start-2 lg:col-span-1'
                 src='https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg'
                 alt='SavvyCal'
                 width={158}
                 height={48}
               />
               <img
-                className='col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1'
+                className='object-contain w-full max-h-12 col-span-2 col-start-2 sm:col-start-auto lg:col-span-1'
                 src='https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg'
                 alt='Statamic'
                 width={158}
@@ -362,7 +362,7 @@ export default function Example() {
             </div>
             <svg
               viewBox='0 0 1404 767'
-              className='absolute -top-24 right-0 -z-10 w-[87.75rem] transform-gpu blur-3xl'
+              className='transform-gpu -top-24 right-0 w-[87.75rem] -z-10 absolute blur-3xl'
               aria-hidden='true'
             >
               <path
@@ -390,50 +390,50 @@ export default function Example() {
         {/* Content section */}
         <div className='mt-32 overflow-hidden sm:mt-40'>
           <div className='mx-auto max-w-7xl px-6 lg:flex lg:px-8'>
-            <div className='mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8'>
-              <div className='lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8'>
-                <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+            <div className='mx-auto max-w-2xl grid gap-x-12 gap-y-16 grid-cols-1 lg:flex-none lg:min-w-full lg:max-w-none lg:mx-0 lg:gap-y-8'>
+              <div className='lg:max-w-lg lg:w-full lg:pb-8 lg:col-end-1'>
+                <h2 className='font-bold tracking-tight text-3xl text-gray-900 sm:text-4xl'>
                   Our people
                 </h2>
-                <p className='mt-6 text-xl leading-8 text-gray-600'>
+                <p className='mt-6 text-xl text-gray-600 leading-8'>
                   Quasi est quaerat. Sit molestiae et. Provident ad dolorem occaecati eos iste.
                   Soluta rerum quidem minus ut molestiae velit error quod. Excepturi quidem expedita
                   molestias quas.
                 </p>
-                <p className='mt-6 text-base leading-7 text-gray-600'>
+                <p className='mt-6 text-base text-gray-600 leading-7'>
                   Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
                   commodo. Elit sunt amet fugiat veniam occaecat fugiat. Quasi aperiam sit non sit
                   neque reprehenderit.
                 </p>
               </div>
-              <div className='flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents'>
-                <div className='w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end'>
+              <div className='flex flex-wrap gap-6 items-start justify-end sm:gap-8 lg:contents'>
+                <div className='flex-auto w-0 lg:flex-none lg:ml-auto lg:w-auto lg:self-end'>
                   <img
                     src='https://images.unsplash.com/photo-1670272502246-768d249768ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80'
                     alt=''
-                    className='aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover'
+                    className='max-w-none object-cover bg-gray-50 rounded-2xl w-[37rem] aspect-[7/5]'
                   />
                 </div>
-                <div className='contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8'>
-                  <div className='order-first flex w-64 flex-none justify-end self-end lg:w-auto'>
+                <div className='contents lg:flex lg:ml-auto lg:w-[37rem] lg:gap-x-8 lg:col-span-2 lg:col-end-2 lg:items-start lg:justify-end'>
+                  <div className='flex flex-none order-first w-64 justify-end self-end lg:w-auto'>
                     <img
                       src='https://images.unsplash.com/photo-1605656816944-971cd5c1407f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80'
                       alt=''
-                      className='aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover'
+                      className='flex-none max-w-none object-cover bg-gray-50 rounded-2xl w-[24rem] aspect-[4/3]'
                     />
                   </div>
-                  <div className='flex w-96 flex-auto justify-end lg:w-auto lg:flex-none'>
+                  <div className='flex flex-auto w-96 justify-end lg:flex-none lg:w-auto'>
                     <img
                       src='https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&h=842&q=80'
                       alt=''
-                      className='aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover'
+                      className='flex-none max-w-none object-cover bg-gray-50 rounded-2xl w-[37rem] aspect-[7/5]'
                     />
                   </div>
-                  <div className='hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none'>
+                  <div className='hidden sm:flex-auto sm:w-0 sm:block lg:flex-none lg:w-auto'>
                     <img
                       src='https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80'
                       alt=''
-                      className='aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover'
+                      className='max-w-none object-cover bg-gray-50 rounded-2xl w-[24rem] aspect-[4/3]'
                     />
                   </div>
                 </div>
@@ -445,44 +445,44 @@ export default function Example() {
         {/* Stats */}
         <div className='mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8'>
           <div className='mx-auto max-w-2xl lg:mx-0'>
-            <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+            <h2 className='font-bold tracking-tight text-3xl text-gray-900 sm:text-4xl'>
               We approach the workplace as something that adds to our lives and adds value to world.
             </h2>
-            <p className='mt-6 text-base leading-7 text-gray-600'>
+            <p className='mt-6 text-base text-gray-600 leading-7'>
               Diam nunc lacus lacus aliquam turpis enim. Eget hac velit est euismod lacus. Est non
               placerat nam arcu. Cras purus nibh cursus sit eu in id. Integer vel nibh.
             </p>
           </div>
-          <div className='mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end'>
-            <div className='flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start'>
-              <p className='flex-none text-3xl font-bold tracking-tight text-gray-900'>250k</p>
-              <div className='sm:w-80 sm:shrink lg:w-auto lg:flex-none'>
-                <p className='text-lg font-semibold tracking-tight text-gray-900'>
+          <div className='flex flex-col mx-auto mt-16 max-w-2xl gap-8 lg:flex-row lg:max-w-none lg:mx-0 lg:mt-20 lg:items-end'>
+            <div className='flex flex-col-reverse bg-gray-50 rounded-2xl p-8 gap-x-16 gap-y-8 justify-between sm:flex-row-reverse sm:max-w-md sm:w-3/4 sm:items-end lg:flex-none lg:flex-col lg:max-w-none lg:w-72 lg:items-start'>
+              <p className='flex-none font-bold tracking-tight text-3xl text-gray-900'>250k</p>
+              <div className='sm:w-80 sm:shrink lg:flex-none lg:w-auto'>
+                <p className='font-semibold text-lg tracking-tight text-gray-900'>
                   Users on the platform
                 </p>
-                <p className='mt-2 text-base leading-7 text-gray-600'>
+                <p className='mt-2 text-base text-gray-600 leading-7'>
                   Vel labore deleniti veniam consequuntur sunt nobis.
                 </p>
               </div>
             </div>
-            <div className='flex flex-col-reverse justify-between gap-y-8 gap-x-16 rounded-2xl bg-gray-900 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44'>
-              <p className='flex-none text-3xl font-bold tracking-tight text-white'>$8.9 billion</p>
-              <div className='sm:w-80 sm:shrink lg:w-auto lg:flex-none'>
-                <p className='text-lg font-semibold tracking-tight text-white'>
+            <div className='flex flex-col-reverse bg-gray-900 rounded-2xl p-8 gap-y-8 gap-x-16 justify-between sm:flex-row-reverse sm:items-end lg:flex-auto lg:flex-col lg:max-w-sm lg:w-full lg:gap-y-44 lg:items-start'>
+              <p className='flex-none font-bold text-white tracking-tight text-3xl'>$8.9 billion</p>
+              <div className='sm:w-80 sm:shrink lg:flex-none lg:w-auto'>
+                <p className='font-semibold text-lg text-white tracking-tight'>
                   We’re proud that our customers have made over $8 billion in total revenue.
                 </p>
-                <p className='mt-2 text-base leading-7 text-gray-400'>
+                <p className='mt-2 text-base text-gray-400 leading-7'>
                   Eu duis porta aliquam ornare. Elementum eget magna egestas.
                 </p>
               </div>
             </div>
-            <div className='flex flex-col-reverse justify-between gap-y-8 gap-x-16 rounded-2xl bg-indigo-600 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28'>
-              <p className='flex-none text-3xl font-bold tracking-tight text-white'>401,093</p>
-              <div className='sm:w-80 sm:shrink lg:w-auto lg:flex-none'>
-                <p className='text-lg font-semibold tracking-tight text-white'>
+            <div className='flex flex-col-reverse bg-indigo-600 rounded-2xl p-8 gap-y-8 gap-x-16 justify-between sm:flex-row-reverse sm:max-w-xl sm:w-11/12 sm:items-end lg:flex-auto lg:flex-col lg:max-w-none lg:w-full lg:gap-y-28 lg:items-start'>
+              <p className='flex-none font-bold text-white tracking-tight text-3xl'>401,093</p>
+              <div className='sm:w-80 sm:shrink lg:flex-none lg:w-auto'>
+                <p className='font-semibold text-lg text-white tracking-tight'>
                   Transactions this year
                 </p>
-                <p className='mt-2 text-base leading-7 text-indigo-200'>
+                <p className='mt-2 text-base text-indigo-200 leading-7'>
                   Eu duis porta aliquam ornare. Elementum eget magna egestas. Eu duis porta aliquam
                   ornare.
                 </p>
@@ -493,47 +493,47 @@ export default function Example() {
 
         {/* Content section */}
         <div className='mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8'>
-          <div className='mx-auto flex max-w-2xl flex-col items-end justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row'>
-            <div className='w-full lg:max-w-lg lg:flex-auto'>
-              <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+          <div className='flex flex-col mx-auto max-w-2xl gap-16 items-end justify-between lg:flex-row lg:max-w-none lg:mx-0'>
+            <div className='w-full lg:flex-auto lg:max-w-lg'>
+              <h2 className='font-bold tracking-tight text-3xl text-gray-900 sm:text-4xl'>
                 We’re always looking for awesome people to join us
               </h2>
-              <p className='mt-6 text-xl leading-8 text-gray-600'>
+              <p className='mt-6 text-xl text-gray-600 leading-8'>
                 Diam nunc lacus lacus aliquam turpis enim. Eget hac velit est euismod lacus. Est non
                 placerat nam arcu. Cras purus nibh cursus sit eu in id.
               </p>
               <img
                 src='https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&h=1104&q=80'
                 alt=''
-                className='mt-16 aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto lg:h-[34.5rem]'
+                className='object-cover bg-gray-50 rounded-2xl mt-16 w-full aspect-[6/5] lg:h-[34.5rem] lg:aspect-auto'
               />
             </div>
-            <div className='w-full lg:max-w-xl lg:flex-auto'>
+            <div className='w-full lg:flex-auto lg:max-w-xl'>
               <h3 className='sr-only'>Job openings</h3>
-              <ul className='-my-8 divide-y divide-gray-100'>
+              <ul className='divide-y divide-gray-100 -my-8'>
                 {jobOpenings.map((opening) => (
                   <li key={opening.id} className='py-8'>
-                    <dl className='relative flex flex-wrap gap-x-3'>
+                    <dl className='flex flex-wrap gap-x-3 relative'>
                       <dt className='sr-only'>Role</dt>
-                      <dd className='w-full flex-none text-lg font-semibold tracking-tight text-gray-900'>
+                      <dd className='flex-none font-semibold text-lg tracking-tight w-full text-gray-900'>
                         <a href={opening.href}>
                           {opening.role}
-                          <span className='absolute inset-0' aria-hidden='true' />
+                          <span className='inset-0 absolute' aria-hidden='true' />
                         </a>
                       </dd>
                       <dt className='sr-only'>Description</dt>
-                      <dd className='mt-2 w-full flex-none text-base leading-7 text-gray-600'>
+                      <dd className='flex-none mt-2 text-base w-full text-gray-600 leading-7'>
                         {opening.description}
                       </dd>
                       <dt className='sr-only'>Salary</dt>
-                      <dd className='mt-4 text-base font-semibold leading-7 text-gray-900'>
+                      <dd className='font-semibold mt-4 text-base text-gray-900 leading-7'>
                         {opening.salary}
                       </dd>
                       <dt className='sr-only'>Location</dt>
-                      <dd className='mt-4 flex items-center gap-x-3 text-base leading-7 text-gray-500'>
+                      <dd className='flex mt-4 text-base text-gray-500 leading-7 gap-x-3 items-center'>
                         <svg
                           viewBox='0 0 2 2'
-                          className='h-0.5 w-0.5 flex-none fill-gray-300'
+                          className='flex-none h-0.5 fill-gray-300 w-0.5'
                           aria-hidden='true'
                         >
                           <circle cx={1} cy={1} r={1} />
@@ -544,10 +544,10 @@ export default function Example() {
                   </li>
                 ))}
               </ul>
-              <div className='mt-8 flex border-t border-gray-100 pt-8'>
+              <div className='border-t flex border-gray-100 mt-8 pt-8'>
                 <a
                   href='#'
-                  className='text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
+                  className='font-semibold text-sm text-indigo-600 leading-6 hover:text-indigo-500'
                 >
                   View all openings <span aria-hidden='true'>&rarr;</span>
                 </a>
@@ -563,17 +563,17 @@ export default function Example() {
           Footer
         </h2>
         <div className='mx-auto max-w-7xl px-6 pb-8 lg:px-8'>
-          <div className='border-t border-gray-900/10 pt-20 xl:grid xl:grid-cols-3 xl:gap-8'>
-            <div className='grid grid-cols-2 gap-8 xl:col-span-2'>
-              <div className='md:grid md:grid-cols-2 md:gap-8'>
+          <div className='border-t border-gray-900/10 pt-20 xl:grid xl:gap-8 xl:grid-cols-3'>
+            <div className='grid gap-8 grid-cols-2 xl:col-span-2'>
+              <div className='md:grid md:gap-8 md:grid-cols-2'>
                 <div>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-900'>Solutions</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
+                  <h3 className='font-semibold text-sm text-gray-900 leading-6'>Solutions</h3>
+                  <ul role='list' className='space-y-4 mt-6'>
                     {footerNavigation.solutions.map((item) => (
                       <li key={item.name}>
                         <a
                           href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-900'
+                          className='text-sm text-gray-600 leading-6 hover:text-gray-900'
                         >
                           {item.name}
                         </a>
@@ -582,13 +582,13 @@ export default function Example() {
                   </ul>
                 </div>
                 <div className='mt-10 md:mt-0'>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-900'>Support</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
+                  <h3 className='font-semibold text-sm text-gray-900 leading-6'>Support</h3>
+                  <ul role='list' className='space-y-4 mt-6'>
                     {footerNavigation.support.map((item) => (
                       <li key={item.name}>
                         <a
                           href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-900'
+                          className='text-sm text-gray-600 leading-6 hover:text-gray-900'
                         >
                           {item.name}
                         </a>
@@ -597,15 +597,15 @@ export default function Example() {
                   </ul>
                 </div>
               </div>
-              <div className='md:grid md:grid-cols-2 md:gap-8'>
+              <div className='md:grid md:gap-8 md:grid-cols-2'>
                 <div>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-900'>Company</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
+                  <h3 className='font-semibold text-sm text-gray-900 leading-6'>Company</h3>
+                  <ul role='list' className='space-y-4 mt-6'>
                     {footerNavigation.company.map((item) => (
                       <li key={item.name}>
                         <a
                           href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-900'
+                          className='text-sm text-gray-600 leading-6 hover:text-gray-900'
                         >
                           {item.name}
                         </a>
@@ -614,13 +614,13 @@ export default function Example() {
                   </ul>
                 </div>
                 <div className='mt-10 md:mt-0'>
-                  <h3 className='text-sm font-semibold leading-6 text-gray-900'>Legal</h3>
-                  <ul role='list' className='mt-6 space-y-4'>
+                  <h3 className='font-semibold text-sm text-gray-900 leading-6'>Legal</h3>
+                  <ul role='list' className='space-y-4 mt-6'>
                     {footerNavigation.legal.map((item) => (
                       <li key={item.name}>
                         <a
                           href={item.href}
-                          className='text-sm leading-6 text-gray-600 hover:text-gray-900'
+                          className='text-sm text-gray-600 leading-6 hover:text-gray-900'
                         >
                           {item.name}
                         </a>
@@ -631,10 +631,10 @@ export default function Example() {
               </div>
             </div>
             <div className='mt-10 xl:mt-0'>
-              <h3 className='text-sm font-semibold leading-6 text-gray-900'>
+              <h3 className='font-semibold text-sm text-gray-900 leading-6'>
                 Subscribe to our newsletter
               </h3>
-              <p className='mt-2 text-sm leading-6 text-gray-600'>
+              <p className='mt-2 text-sm text-gray-600 leading-6'>
                 The latest news, articles, and resources, sent to your inbox weekly.
               </p>
               <form className='mt-6 sm:flex sm:max-w-md'>
@@ -647,13 +647,13 @@ export default function Example() {
                   id='email-address'
                   autoComplete='email'
                   required
-                  className='w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-64 sm:text-sm sm:leading-6 xl:w-full'
+                  className='bg-white rounded-md border-0 shadow-sm ring-inset text-base w-full min-w-0 py-1.5 px-3 ring-1 ring-gray-300 text-gray-900 appearance-none placeholder:text-gray-400 sm:text-sm sm:leading-6 sm:w-64 xl:w-full focus:ring-inset focus:ring-2 focus:ring-indigo-600'
                   placeholder='Enter your email'
                 />
-                <div className='mt-4 sm:mt-0 sm:ml-4 sm:flex-shrink-0'>
+                <div className='mt-4 sm:flex-shrink-0 sm:mt-0 sm:ml-4'>
                   <button
                     type='submit'
-                    className='flex w-full items-center justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                    className='rounded-md flex font-semibold bg-indigo-600 shadow-sm text-sm text-white w-full py-2 px-3 items-center justify-center hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                   >
                     Subscribe
                   </button>
@@ -661,7 +661,7 @@ export default function Example() {
               </form>
             </div>
           </div>
-          <div className='mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24'>
+          <div className='border-t border-gray-900/10 mt-16 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24'>
             <div className='flex space-x-6 md:order-2'>
               {footerNavigation.social.map((item) => (
                 <a key={item.name} href={item.href} className='text-gray-400 hover:text-gray-500'>
@@ -670,7 +670,7 @@ export default function Example() {
                 </a>
               ))}
             </div>
-            <p className='mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0'>
+            <p className='mt-8 text-xs text-gray-500 leading-5 md:order-1 md:mt-0'>
               &copy; 2020 Your Company, Inc. All rights reserved.
             </p>
           </div>
