@@ -13,6 +13,8 @@ import { AddButton, Table, TableDescription } from './PropertiesTable.server'
 const PropertiesTable = async () => {
   const { properties } = await getData()
 
+  console.log(properties)
+
   return (
     <div className=''>
       <div className='sm:flex sm:items-center'>

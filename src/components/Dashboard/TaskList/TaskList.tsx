@@ -56,11 +56,11 @@ export default async function TaskList({ tasks }: { tasks: any }) {
                 <div className='flex flex-1 min-w-0 items-center'>
                   <div className='flex-shrink-0'>
                     <Image
-                      className='rounded-full h-12 w-12'
                       src={task.user.avatar_url}
                       alt={`${task.user.first_name} ${task.user.last_name} Avatar`}
                       height='32'
                       width='32'
+                      className='object-cover rounded-full h-12 w-12'
                     />
                   </div>
                   <div className='flex-1 min-w-0 px-4 md:grid md:gap-4 md:grid-cols-2'>

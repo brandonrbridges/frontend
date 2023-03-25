@@ -40,10 +40,25 @@ export const handleVariant = (variant: string) => {
         background: 'bg-gray-800',
         color: 'text-gray-100',
       }
+    case 'occupied':
+      return {
+        background: 'bg-emerald-100',
+        color: 'text-emerald-800',
+      }
+    case 'private':
+      return {
+        background: 'bg-gray-100',
+        color: 'text-gray-800',
+      }
+    case 'setup':
+      return {
+        background: 'bg-indigo-100',
+        color: 'text-indigo-800',
+      }
     default:
       return {
-        backgroundColor: 'bg-gray-100',
-        color: 'text-gray-800',
+        background: 'bg-gray-200',
+        color: 'text-gray-600',
       }
   }
 }

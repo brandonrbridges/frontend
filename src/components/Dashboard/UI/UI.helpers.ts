@@ -5,7 +5,6 @@ export const generateLinks = (user: UserProps): LinkProps[] => {
     {
       name: 'Dashboard',
       href: 'dashboard',
-      current: true,
     },
   ]
 
@@ -38,11 +37,11 @@ export const generateLinks = (user: UserProps): LinkProps[] => {
   links.push(
     {
       name: 'Tasks',
-      href: '/dashboard/tasks',
+      href: 'dashboard/tasks',
     },
     {
       name: 'AI Assistant',
-      href: '/dashboard/ai-assistant',
+      href: 'dashboard/ai-assistant',
     }
   )
 

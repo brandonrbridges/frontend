@@ -7,6 +7,7 @@ import type { Property } from './PropertiesTable.props'
 // Icons
 import { IconChevronDown } from '@tabler/icons-react'
 import Button from '@/components/Button'
+import Badge from '@/components/Badge'
 
 export const AddButton = () => {
   return (
@@ -100,7 +101,9 @@ const TableRow = ({ property }: { property: Property }) => {
       <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>
         {property.address.postcode}
       </td>
-      <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>{property.status}</td>
+      <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>
+        <Badge variant={property.status}>{property.status}</Badge>
+      </td>
       <td className='text-sm py-4 px-3 text-gray-500 whitespace-nowrap'>
         {property.tenant_id && property.tenant && (
           <>{property.tenant.first_name + ' ' + property.tenant.last_name}</>

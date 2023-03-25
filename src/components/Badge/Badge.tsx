@@ -11,6 +11,7 @@ export default function Badge({
   variant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
 }) {
   const { background, color } = handleVariant(variant)
+
   children = children && children.replaceAll('_', ' ').toUpperCase()
 
   return (

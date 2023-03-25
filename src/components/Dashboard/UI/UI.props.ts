@@ -8,6 +8,6 @@ export interface UserProps {
 
 export interface LinkProps {
   name: string
-  href: string
+  href: string | null
   current?: boolean
 }

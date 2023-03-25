@@ -1,8 +1,5 @@
 'use client'
 
-// React
-import { useRef } from 'react'
-
 // Next
 import { useRouter } from 'next/navigation'
 
@@ -10,8 +7,7 @@ import { useRouter } from 'next/navigation'
 import { fetcher } from '@/helpers'
 
 // Components
-import Button from '@/components/Button'
-import { DropdownInput, Label, TextInput } from '@/components/Form'
+import { DropdownInput, Header, Label, Row, TextInput } from '@/components/Form'
 
 // Client Components
 import { PropertyMap } from './PropertyForm.client'
@@ -19,6 +15,7 @@ import { PropertyMap } from './PropertyForm.client'
 // Modules
 import { AddressAutofill } from '@mapbox/search-js-react'
 import { Controller, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 const PropertyForm = ({ user_id }: { user_id: string }) => {
   const router = useRouter()
@@ -47,26 +44,26 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
   })
 
   const submit = async (data: any) => {
-    const property = await fetcher.POST('/properties', {
-      ...data,
-      status: 'setup',
-      user_id,
-    })
-
-    router.push(`/dashboard/properties/${property._id}`)
+    toast
+      .promise(fetcher.POST('/properties', { ...data, user_id }), {
+        pending: 'Adding property...',
+        success: 'Property added successfully!',
+        error: 'Something went wrong. Please try again.',
+      })
+      .then((property: any) => router.push(`/dashboard/properties/${property._id}`))
   }
 
   return (
     <form onSubmit={handleSubmit(submit)} className='space-y-8 divide-y divide-gray-200'>
       <div className='space-y-8 divide-y divide-gray-200 sm:space-y-5'>
         <div className='space-y-6 sm:space-y-5'>
-          <FormHeader
+          <Header
             title='Add a Property'
             description='Make sure all fields below are filled in correctly.'
           />
 
           <div className='space-y-6 sm:space-y-5'>
-            <FormRow
+            <Row
               label={<Label htmlFor='name'>Name</Label>}
               input={
                 <Controller
@@ -87,7 +84,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
         </div>
 
         <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10'>
-          <FormHeader
+          <Header
             title='Property Address'
             description='The permanent address of the property. This will only be visible to you, your chosen
               Letting Agency and your tenants.'
@@ -95,7 +92,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
 
           <AddressAutofill accessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLIC_KEY?.toString()}>
             <div className='space-y-6 sm:space-y-5 mt-6'>
-              <FormRow
+              <Row
                 label={<Label htmlFor='address.line_1'>Line 1</Label>}
                 input={
                   <Controller
@@ -113,7 +110,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
                 }
               />
 
-              <FormRow
+              <Row
                 label={<Label htmlFor='address.line_2'>Line 2</Label>}
                 input={
                   <Controller
@@ -131,7 +128,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
                 }
               />
 
-              <FormRow
+              <Row
                 label={<Label htmlFor='address.city'>Town / City</Label>}
                 input={
                   <Controller
@@ -149,7 +146,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
                 }
               />
 
-              <FormRow
+              <Row
                 label={<Label htmlFor='address.county'>County</Label>}
                 input={
                   <Controller
@@ -167,7 +164,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
                 }
               />
 
-              <FormRow
+              <Row
                 label={<Label htmlFor='address.postcode'>Postcode</Label>}
                 input={
                   <Controller
@@ -191,9 +188,9 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
         </div>
 
         <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10'>
-          <FormHeader title='Property Information' description='Information about your property.' />
+          <Header title='Property Information' description='Information about your property.' />
 
-          <FormRow
+          <Row
             label={<Label htmlFor='type'>Type</Label>}
             input={
               <Controller
@@ -215,7 +212,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
             }
           />
 
-          <FormRow
+          <Row
             label={<Label htmlFor='bedrooms'>Bedrooms</Label>}
             input={
               <Controller
@@ -233,7 +230,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
             }
           />
 
-          <FormRow
+          <Row
             label={<Label htmlFor='bathrooms'>Bathrooms</Label>}
             input={
               <Controller
@@ -253,12 +250,12 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
         </div>
 
         <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10'>
-          <FormHeader
+          <Header
             title='Rent and Deposit'
             description='The rent and deposit for your property. This will only be visible to you, your chosen Letting Agency and your tenants.'
           />
 
-          <FormRow
+          <Row
             label={<Label htmlFor='rent'>Rent</Label>}
             input={
               <Controller
@@ -276,7 +273,7 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
             }
           />
 
-          <FormRow
+          <Row
             label={<Label htmlFor='deposit'>Deposit</Label>}
             input={
               <Controller
@@ -315,23 +312,5 @@ const PropertyForm = ({ user_id }: { user_id: string }) => {
     </form>
   )
 }
-
-const FormHeader = ({ title, description }: { title: string; description: string }) => (
-  <div>
-    <h3 className='text-base font-semibold leading-6 text-gray-900'>{title}</h3>
-    <p className='mt-1 text-sm text-gray-500'>{description}</p>
-  </div>
-)
-
-const FormRow = ({ label, input }: { label: React.ReactNode; input: React.ReactNode }) => (
-  <div className='space-y-6 sm:space-y-5'>
-    <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
-      {label}
-      <div className='mt-2 sm:col-span-2 sm:mt-0'>
-        <div className='flex max-w-lg'>{input}</div>
-      </div>
-    </div>
-  </div>
-)
 
 export default PropertyForm

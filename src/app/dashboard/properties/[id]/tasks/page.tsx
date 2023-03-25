@@ -6,16 +6,7 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { fetcher } from '@/helpers'
 
 // Components
-import {
-  PageNavigation,
-  Panel,
-  PropertiesTable,
-  PropertyInfo,
-  Stats,
-  TaskList,
-  TenantCard,
-} from '@/components/Dashboard'
-import Button from '@/components/Button'
+import { Panel, TaskFilter, TaskList } from '@/components/Dashboard'
 
 async function getData(id) {
   const { user } = await getServerSession(authOptions)
@@ -28,17 +19,22 @@ async function getData(id) {
     property_id: id,
   })
 
-  return { user, property, tasks }
+  return { tasks }
 }
 
 export default async function Page({ params }) {
-  const { user, property, tasks } = await getData(params.id)
+  const { tasks } = await getData(params.id)
 
   return (
     <>
-      <Panel>
-        <h3>Tasks</h3>
-      </Panel>
+      <div className='gap-6 grid grid-cols-1 md:grid-cols-3 items-start'>
+        <Panel className='col-span-1'>
+          <TaskFilter />
+        </Panel>
+        <Panel className='col-span-2'>
+          <TaskList tasks={tasks} />
+        </Panel>
+      </div>
     </>
   )
 }

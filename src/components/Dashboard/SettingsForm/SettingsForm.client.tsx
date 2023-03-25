@@ -11,6 +11,8 @@ import { fetcher } from '@/helpers'
 
 // Components
 import Button from '@/components/Button'
+import Image from 'next/image'
+import { toast } from 'react-toastify'
 
 const HOST = process.env.NEXT_PUBLIC_API_URL
 
@@ -24,53 +26,49 @@ export const PhotoUpload = ({ user }) => {
   const handlePhotoUpload = async (file: File) => {
     setUploading(true)
 
-    try {
-      const form = new FormData()
-      form.append('file', file)
+    const form = new FormData()
+    form.append('file', file)
 
-      const response = await fetch(HOST + '/users/' + user._id + '/upload-avatar', {
-        method: 'POST',
-        // headers: {
-        //   'Content-Type': 'multipart/form-data',
-        // },
-        body: form,
+    toast
+      .promise(fetcher.UPLOAD(`/users/${user._id}/upload-avatar`, form), {
+        pending: 'Uploading photo...',
+        success: 'Photo uploaded successfully!',
+        error: 'Something went wrong. Please try again.',
       })
+      .finally(() => {
+        setUploading(false)
 
-      const data = await response.json()
-
-      console.log({ file, data })
-    } catch (error) {
-      console.error(error)
-    }
-
-    router.refresh()
+        router.refresh()
+      })
   }
 
   return (
-    <div className='sm:border-t sm:border-gray-200 sm:grid sm:pt-5 sm:gap-4 sm:grid-cols-3 sm:items-center'>
-      <label htmlFor='photo' className='font-medium text-sm text-gray-900 leading-6 block'>
-        Photo
-      </label>
-      <div className='mt-2 sm:mt-0 sm:col-span-2'>
-        <div className='flex space-x-4 items-center'>
-          <div className='rounded-full bg-gray-300 h-10 w-10 relative'>{/* AVATAR HERE */}</div>
-          <input
-            type='file'
-            className='bg-white rounded-md font-semibold shadow-sm ring-inset text-sm ml-5 py-1.5 px-2.5 ring-1 ring-gray-300 text-gray-900 hidden hover:bg-gray-50'
-            ref={photoRef}
-            onChange={({ target: { files } }) => files?.length && handlePhotoUpload(files[0])}
+    <div className='flex space-x-4 items-center'>
+      <div className='rounded-full bg-gray-300 h-20 w-20 relative'>
+        {user.avatar_url && (
+          <Image
+            src={user.avatar_url}
+            alt={`${user.first_name} ${user.last_name} Avatar`}
+            fill
+            className='object-cover rounded-full'
           />
-
-          {!uploading ? (
-            <Button onClick={() => photoRef && photoRef.current.click()}>Upload a Photo</Button>
-          ) : (
-            <div className='flex space-x-2 items-center'>
-              <div className='rounded-full border-b-2 border-gray-900 h-5 animate-spin w-5'></div>
-              <p>Uploading...</p>
-            </div>
-          )}
-        </div>
+        )}
       </div>
+      <input
+        type='file'
+        className='bg-white rounded-md font-semibold shadow-sm ring-inset text-sm ml-5 py-1.5 px-2.5 ring-1 ring-gray-300 text-gray-900 hidden hover:bg-gray-50'
+        ref={photoRef}
+        onChange={({ target: { files } }) => files?.length && handlePhotoUpload(files[0])}
+      />
+
+      {!uploading ? (
+        <Button onClick={() => photoRef && photoRef.current.click()}>Upload a Photo</Button>
+      ) : (
+        <div className='flex space-x-2 items-center'>
+          <div className='rounded-full border-b-2 border-gray-900 h-5 animate-spin w-5'></div>
+          <p>Uploading...</p>
+        </div>
+      )}
     </div>
   )
 }

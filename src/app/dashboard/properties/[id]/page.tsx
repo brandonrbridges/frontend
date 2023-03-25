@@ -44,11 +44,13 @@ export default async function Page({ params }) {
         </div>
         <div className='space-y-6 col-span-2'>
           <TenantCard user={property.user} />
-          <TenantCard user={property.tenant} />
+          {property.tenant && <TenantCard user={property.tenant} />}
           <Panel>
             <TaskList tasks={tasks} />
           </Panel>
-          <Button className='w-full'>Evict {property.tenant.first_name}</Button>
+          {property.tenant && (
+            <Button className='w-full'>Evict {property.tenant.first_name}</Button>
+          )}
         </div>
       </div>
     </>

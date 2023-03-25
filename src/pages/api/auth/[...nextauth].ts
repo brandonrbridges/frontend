@@ -15,6 +15,7 @@ import { fetcher } from '@/helpers'
 import jwt from 'jsonwebtoken'
 
 export const authOptions: NextAuthOptions = {
+  debug: process.env.NEXT_PUBLIC_NODE_ENV === 'development',
   providers: [
     Credentials({
       name: 'Credentials',
@@ -24,28 +25,12 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         try {
-          const url = process.env.NEXT_PUBLIC_API_URL + '/auth/login'
-
-          const payload = {
+          const user = await fetcher.POST('/auth/login', {
             email: credentials?.email,
             password: credentials?.password,
-          }
-
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
           })
 
-          if (!response.ok) {
-            return Promise.reject('Invalid email or password')
-          }
-
-          const data = await response.json()
-
-          return data
+          return user
         } catch (error) {
           console.error(error)
 
@@ -57,10 +42,13 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    jwt: async ({ token }) => {
-      if (token) {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token = user
+      }
+
+      if (token && token.refreshToken) {
         const { refreshToken } = token
 
         const response = await fetcher.POST('/auth/refresh-token', {

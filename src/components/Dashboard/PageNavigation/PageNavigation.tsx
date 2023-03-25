@@ -1,30 +1,39 @@
+'use client'
+
+// Helpers
 import { classNames } from '@/helpers'
 
 const tabs = [
-  { name: 'Overview', href: '', current: true },
-  { name: 'Tasks', href: 'tasks', current: false },
-  { name: 'Payments', href: 'payments', current: false },
-  { name: 'Documents', href: 'documents', current: false },
+  { name: 'Overview', href: '/' },
+  { name: 'Tasks', href: '/tasks' },
+  { name: 'Payments', href: '/payments' },
+  { name: 'Documents', href: '/documents' },
 ]
 
 const PageNavigation = ({ id }) => {
   return (
     <nav className='flex space-x-4' aria-label='Tabs'>
-      {tabs.map((tab) => (
-        <a
-          key={tab.name}
-          href={`/dashboard/properties/${id}/${tab.href}`}
-          className={classNames(
-            tab.current
-              ? 'bg-gray-900 text-gray-200'
-              : 'bg-white text-gray-500 hover:text-gray-700',
-            'rounded-md px-3 py-1 text-sm font-medium'
-          )}
-          aria-current={tab.current ? 'page' : undefined}
-        >
-          {tab.name}
-        </a>
-      ))}
+      {tabs.map((tab) => {
+        console.log(window.location.pathname)
+
+        const current = window.location.pathname.includes(tab.href)
+
+        return (
+          <a
+            key={tab.name}
+            href={`/dashboard/properties/${id}/${tab.href}`}
+            className={classNames(
+              current
+                ? 'bg-gray-900  border-gray-900 hover:border-gray-800 text-gray-200 hover:text-gray-100'
+                : 'bg-transparent border-gray-600 text-gray-400 hover:text-gray-200',
+              'border rounded-md px-3 py-1 text-sm font-medium transition-colors'
+            )}
+            aria-current={tab.current ? 'page' : undefined}
+          >
+            {tab.name}
+          </a>
+        )
+      })}
     </nav>
   )
 }

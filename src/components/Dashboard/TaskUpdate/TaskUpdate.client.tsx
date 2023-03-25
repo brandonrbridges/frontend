@@ -17,8 +17,6 @@ export const TaskUpdateActions = ({ message, task }) => {
       message_id: message._id,
     })
 
-    console.log('refreshing')
-
     router.refresh()
   }
 

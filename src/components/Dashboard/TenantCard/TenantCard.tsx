@@ -30,7 +30,7 @@ export default function TenantCard({ user }: { user: DefaultSession['user'] }) {
         <div className='h-10 w-10 flex-shrink-0 relative rounded-full bg-gray-300'>
           {user.avatar_url && (
             <Image
-              className='h-10 w-10 rounded-full'
+              className='h-10 w-10 object-cover rounded-full'
               src={user.avatar_url}
               alt={`${user.first_name} ${user.last_name} Avatar`}
               height='32'

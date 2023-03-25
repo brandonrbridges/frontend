@@ -24,6 +24,8 @@ import { IconBell } from '@tabler/icons-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 
+import { toast, ToastContainer } from 'react-toastify'
+
 const userNavigation = [{ name: 'Settings', href: 'dashboard/settings' }]
 
 export default function UI({ children, user }: { children: React.ReactNode; user: UserProps }) {
@@ -33,9 +35,13 @@ export default function UI({ children, user }: { children: React.ReactNode; user
   if (!user) return router.push('/auth/login')
 
   const handleSignout = async () => {
-    await signOut({ redirect: false, callbackUrl: '/' })
-
-    router.push('/auth/login')
+    toast
+      .promise(signOut({ redirect: false, callbackUrl: '/' }), {
+        pending: 'Signing out...',
+        success: 'Signed out successfully!',
+        error: 'Something went wrong. Please try again.',
+      })
+      .finally(() => router.push('/auth/login'))
   }
 
   return (
@@ -195,6 +201,7 @@ export default function UI({ children, user }: { children: React.ReactNode; user
           </div>
         </main>
       </div>
+      <ToastContainer />
     </>
   )
 }

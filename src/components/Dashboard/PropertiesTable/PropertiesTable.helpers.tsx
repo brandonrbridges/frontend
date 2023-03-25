@@ -9,12 +9,10 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { fetcher } from '@/helpers'
 
 export async function getData() {
-  const {
-    user: { _id },
-  } = await getServerSession(authOptions)
+  const { user } = await getServerSession(authOptions)
 
   const properties = (await fetcher.GET(`/properties`, {
-    user_id: _id,
+    user_id: user._id,
   })) as Property[]
 
   return { properties }

@@ -29,8 +29,9 @@ const TaskUpdate = async ({ message, task }) => {
               <Image
                 src={message.user.avatar_url}
                 alt={message.user.first_name + ' ' + message.user.last_name + ' Avatar'}
-                fill
-                className='rounded-full'
+                height={32}
+                width={32}
+                className='h-6 object-cover rounded-full w-6'
               />
             )}
           </div>

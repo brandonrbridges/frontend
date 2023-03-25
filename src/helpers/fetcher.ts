@@ -71,8 +71,7 @@ const DELETE = async (url: string): Promise<object> => {
 }
 
 const handleResponse = async (response: Response) => {
-  const text = await response.text()
-  const data = text && JSON.parse(text)
+  const data = await response.json()
 
   if (!response.ok) {
     const error = (data && data.message) || response.statusText
@@ -83,12 +82,24 @@ const handleResponse = async (response: Response) => {
   return data
 }
 
+const UPLOAD = async (url: string, body: FormData): Promise<object> => {
+  const options = {
+    method: 'POST',
+    body,
+  }
+
+  const response = await fetch(HOST + url, options)
+
+  return await handleResponse(response)
+}
+
 const fetcher = {
   GET,
   POST,
   PATCH,
   PUT,
   DELETE,
+  UPLOAD,
 }
 
 export default fetcher

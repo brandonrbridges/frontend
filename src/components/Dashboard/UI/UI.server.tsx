@@ -12,7 +12,7 @@ import { LinkProps, UserProps } from './UI.props'
 export const Avatar = ({ user }: { user: UserProps }) => {
   return (
     <Image
-      className='h-8 w-8 rounded-full'
+      className='h-10 w-10 object-cover rounded-full'
       src={user?.avatar_url}
       alt={user?.first_name + ' ' + user?.last_name + ' Avatar'}
       height='32'
