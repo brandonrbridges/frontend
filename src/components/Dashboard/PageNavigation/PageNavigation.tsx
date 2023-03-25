@@ -8,6 +8,7 @@ const tabs = [
   { name: 'Tasks', href: '/tasks' },
   { name: 'Payments', href: '/payments' },
   { name: 'Documents', href: '/documents' },
+  { name: 'Settings', href: '/settings' },
 ]
 
 const PageNavigation = ({ id }) => {
