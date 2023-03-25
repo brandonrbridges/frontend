@@ -1,6 +1,7 @@
 import AccountingStats from './AccountingStats'
 import AIAssistant from './AIAssistant'
 import * as Charts from './Charts'
+import DocumentItem from './DocumentItem'
 import PageNavigation from './PageNavigation'
 import Panel from './Panel'
 import PropertiesTable from './PropertiesTable'
@@ -21,6 +22,7 @@ export {
   AccountingStats,
   AIAssistant,
   Charts,
+  DocumentItem,
   PageNavigation,
   Panel,
   PropertiesTable,

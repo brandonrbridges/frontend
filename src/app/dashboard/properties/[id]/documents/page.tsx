@@ -7,6 +7,7 @@ import { fetcher } from '@/helpers'
 
 // Components
 import {
+  DocumentItem,
   PageNavigation,
   Panel,
   PropertiesTable,
@@ -37,7 +38,14 @@ export default async function Page({ params }) {
   return (
     <>
       <Panel>
-        <h3>Documents</h3>
+        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+          <DocumentItem />
+          <DocumentItem />
+          <DocumentItem />
+          <DocumentItem />
+          <DocumentItem />
+          <DocumentItem />
+        </div>
       </Panel>
     </>
   )
