@@ -36,7 +36,7 @@ export default async function PropertyLayout({
     <>
       <div className='space-y-6'>
         <h2 className='font-bold text-white text-4xl'>{property.address.line_1}</h2>
-        <PageNavigation id={property._id} />
+        <PageNavigation id={property._id} params={params} />
       </div>
 
       {children}

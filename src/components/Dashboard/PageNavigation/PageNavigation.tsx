@@ -1,23 +1,28 @@
-'use client'
-
 // Helpers
 import { classNames } from '@/helpers'
 
 const tabs = [
-  { name: 'Overview', href: '/' },
+  { name: 'Overview', href: null },
   { name: 'Tasks', href: '/tasks' },
   { name: 'Payments', href: '/payments' },
   { name: 'Documents', href: '/documents' },
   { name: 'Settings', href: '/settings' },
 ]
 
-const PageNavigation = ({ id }) => {
+const HOST = process.env.NEXT_PUBLIC_HOST
+
+const PageNavigation = ({ params }) => {
+  const { id } = params
+
   return (
     <nav className='flex space-x-4' aria-label='Tabs'>
       {tabs.map((tab) => {
-        console.log(window.location.pathname)
+        const url = `${HOST}/dashboard/properties/${id}/${tab.href || ''}`
+        let current = false
 
-        const current = window.location.pathname.includes(tab.href)
+        if (url.endsWith(tab.href)) {
+          current = true
+        }
 
         return (
           <a
@@ -29,7 +34,7 @@ const PageNavigation = ({ id }) => {
                 : 'bg-transparent border-gray-600 text-gray-400 hover:text-gray-200',
               'border rounded-md px-3 py-1 text-sm font-medium transition-colors'
             )}
-            aria-current={tab.current ? 'page' : undefined}
+            aria-current={current ? 'page' : undefined}
           >
             {tab.name}
           </a>

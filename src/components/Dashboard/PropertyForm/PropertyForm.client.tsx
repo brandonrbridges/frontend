@@ -1,7 +1,12 @@
 import { useRef, useState, useEffect } from 'react'
 
+import { Row, TextInput } from '@/components/Form'
+
+// Modules
+import { Label } from 'recharts'
 import Map from 'react-map-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
+
+import { Controller } from 'react-hook-form'
 
 export const PropertyMap = () => {
   return (

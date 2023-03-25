@@ -25,7 +25,7 @@ const TaskUpdate = async ({ message, task }) => {
       <div className='flex items-center justify-between mt-2 text-gray-500 text-sm'>
         <div className='flex items-center space-x-2'>
           <div className='bg-gray-500 h-6 relative rounded-full w-6'>
-            {message.user?.avatar_url && (
+            {message.user.avatar_url && (
               <Image
                 src={message.user.avatar_url}
                 alt={message.user.first_name + ' ' + message.user.last_name + ' Avatar'}
