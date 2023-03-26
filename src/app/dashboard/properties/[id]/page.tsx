@@ -14,6 +14,7 @@ import {
   Stats,
   TaskList,
   TenantCard,
+  TenantSearch,
 } from '@/components/Dashboard'
 import Button from '@/components/Button'
 
@@ -52,7 +53,7 @@ export default async function Page({ params }) {
           ) : (
             <>
               <Panel>
-                <Button className='w-full'>Invite a Tenant</Button>
+                <TenantSearch />
               </Panel>
             </>
           )}
