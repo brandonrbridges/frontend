@@ -37,17 +37,22 @@ const SettingsForm = ({ user }: { user: any }) => {
     delete data.email
 
     toast
-      .promise(fetcher.PATCH(`/users/${user._id}`, data), {
-        pending: 'Updating profile...',
-        success: 'Profile updated successfully!',
-        error: 'Something went wrong. Please try again.',
-      })
+      .promise(
+        fetcher.PATCH(`/users/${user._id}`, data, {
+          newURL: '/api/dashboard/settings',
+        }),
+        {
+          pending: 'Updating profile...',
+          success: 'Profile updated successfully!',
+          error: 'Something went wrong. Please try again.',
+        }
+      )
       .finally(() => router.refresh())
   }
 
   return (
-    <form onSubmit={handleSubmit(submit)} className='space-y-8 divide-y divide-gray-200'>
-      <div className='space-y-8 divide-y divide-gray-200 sm:space-y-5'>
+    <form onSubmit={handleSubmit(submit)} className='divide-y space-y-8 divide-gray-200'>
+      <div className='divide-y space-y-8 divide-gray-200 sm:space-y-5'>
         <div className='space-y-6 sm:space-y-5'>
           <Header
             title='Update your Profile'
@@ -127,7 +132,7 @@ const SettingsForm = ({ user }: { user: any }) => {
       </div>
 
       <div className='pt-5'>
-        <div className='flex justify-end gap-x-3'>
+        <div className='flex gap-x-3 justify-end'>
           <Button type='submit'>Update Profile</Button>
         </div>
       </div>
