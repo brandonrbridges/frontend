@@ -36,28 +36,9 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <div className='grid gap-6 grid-cols-5 items-start'>
-        <div className='space-y-6 col-span-3'>
-          <Panel className='col-span-3'>
-            <PropertyInfo property={property} />
-          </Panel>
-        </div>
-        <div className='space-y-6 col-span-2'>
-          {user._id !== property.user._id && <TenantCard user={property.user} />}
-          {property.tenant ? (
-            <>
-              <TenantCard user={property.tenant} />
-              <Button className='w-full'>Evict {property.tenant.first_name}</Button>
-            </>
-          ) : (
-            <>
-              <Panel>
-                <Button className='w-full'>Invite a Tenant</Button>
-              </Panel>
-            </>
-          )}
-        </div>
-      </div>
+      <Panel>
+        <h3>Tenancy</h3>
+      </Panel>
     </>
   )
 }

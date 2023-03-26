@@ -1,33 +1,32 @@
 // Helpers
 import { classNames } from '@/helpers'
-
-const tabs = [
-  { name: 'Overview', href: null },
-  { name: 'Tasks', href: '/tasks' },
-  { name: 'Payments', href: '/payments' },
-  { name: 'Documents', href: '/documents' },
-  { name: 'Settings', href: '/settings' },
-]
+import Link from 'next/link'
 
 const HOST = process.env.NEXT_PUBLIC_HOST
 
 const PageNavigation = ({ params }) => {
   const { id } = params
 
+  const prefix = `dashboard/properties/${id}`
+
+  const tabs = [
+    { name: 'Overview', href: prefix },
+    { name: 'Tasks', href: prefix + '/tasks' },
+    { name: 'Payments', href: prefix + '/payments' },
+    { name: 'Tenancy', href: prefix + '/tenancy' },
+    { name: 'Documents', href: prefix + '/documents' },
+    { name: 'Settings', href: prefix + '/settings' },
+  ]
+
   return (
     <nav className='flex space-x-4' aria-label='Tabs'>
       {tabs.map((tab) => {
-        const url = `${HOST}/dashboard/properties/${id}/${tab.href || ''}`
         let current = false
 
-        if (url.endsWith(tab.href)) {
-          current = true
-        }
-
         return (
-          <a
+          <Link
             key={tab.name}
-            href={`/dashboard/properties/${id}/${tab.href}`}
+            href={tab.href}
             className={classNames(
               current
                 ? 'bg-gray-900  border-gray-900 hover:border-gray-800 text-gray-200 hover:text-gray-100'
@@ -37,7 +36,7 @@ const PageNavigation = ({ params }) => {
             aria-current={current ? 'page' : undefined}
           >
             {tab.name}
-          </a>
+          </Link>
         )
       })}
     </nav>
