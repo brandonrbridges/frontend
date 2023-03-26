@@ -1,4 +1,4 @@
-const HOST = '/api'
+const HOST = process.env.NEXT_PUBLIC_API_URL
 
 const GET = async (url: string, query?: any): Promise<object> => {
   const options = {
