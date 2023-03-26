@@ -1,4 +1,4 @@
-const HOST = process.env.NEXT_PUBLIC_API_URL
+const HOST = '/api'
 
 const GET = async (url: string, query?: any): Promise<object> => {
   const options = {
@@ -71,6 +71,17 @@ const DELETE = async (url: string): Promise<object> => {
   return await handleResponse(response)
 }
 
+const UPLOAD = async (url: string, body: FormData): Promise<object> => {
+  const options = {
+    method: 'POST',
+    body,
+  }
+
+  const response = await fetch(HOST + url, options)
+
+  return await handleResponse(response)
+}
+
 const handleResponse = async (response: Response) => {
   const data = await response.json()
 
@@ -81,17 +92,6 @@ const handleResponse = async (response: Response) => {
   }
 
   return data
-}
-
-const UPLOAD = async (url: string, body: FormData): Promise<object> => {
-  const options = {
-    method: 'POST',
-    body,
-  }
-
-  const response = await fetch(HOST + url, options)
-
-  return await handleResponse(response)
 }
 
 const fetcher = {
