@@ -60,14 +60,6 @@ export default function UI({ children, user }: { children: React.ReactNode; user
                       </div>
                       <div className='hidden md:block'>
                         <div className='flex ml-4 items-center md:ml-6'>
-                          <button
-                            type='button'
-                            className='rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-white focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800'
-                          >
-                            <span className='sr-only'>View notifications</span>
-                            <IconBell className='h-6 w-6' aria-hidden='true' />
-                          </button>
-
                           {/* Profile dropdown */}
                           <Menu as='div' className='ml-3 relative'>
                             <div>
@@ -87,12 +79,15 @@ export default function UI({ children, user }: { children: React.ReactNode; user
                             >
                               <Menu.Items className='bg-white rounded-md shadow-lg ring-black mt-2 py-1 origin-top-right right-0 ring-1 ring-opacity-5 w-48 z-10 absolute focus:outline-none'>
                                 {user.roles.includes('admin') && (
-                                  <Menu.Item
-                                    className={classNames(
-                                      'block hover:bg-gray-100 px-4 py-2 text-sm text-gray-700 text-left w-full'
-                                    )}
-                                  >
-                                    <Link href='admin'>Admin Panel</Link>
+                                  <Menu.Item>
+                                    <Link
+                                      href='admin'
+                                      className={classNames(
+                                        'block hover:bg-gray-100 px-4 py-2 text-sm text-gray-700 text-left w-full'
+                                      )}
+                                    >
+                                      Admin Panel
+                                    </Link>
                                   </Menu.Item>
                                 )}
 

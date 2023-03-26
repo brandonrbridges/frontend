@@ -8,18 +8,21 @@ import { fetcher } from '@/helpers'
 // Components
 import Alert from '@/components/Alert'
 import { Panel, PropertiesTable, Stats } from '@/components/Dashboard'
-import { IconBuilding, IconChecklist, IconUsers } from '@tabler/icons-react'
 
-import { ResponsivePieCanvas } from '@nivo/pie'
-import { PieChart } from '@/components/Dashboard/Charts'
+// Icons
+import { IconBuilding, IconChecklist, IconUsers } from '@tabler/icons-react'
 
 async function getData() {
   const { user } = await getServerSession(authOptions)
 
-  let properties
+  let properties, tenants
 
   if (user.roles.includes('landlord')) {
     properties = (await fetcher.GET('/properties', {
+      user_id: user._id,
+    })) as []
+
+    tenants = (await fetcher.GET('/tenants', {
       user_id: user._id,
     })) as []
   } else {
@@ -27,10 +30,6 @@ async function getData() {
       tenant_id: user._id,
     })) as []
   }
-
-  const tenants = (await fetcher.GET('/tenants', {
-    user_id: user._id,
-  })) as []
 
   const tasks = (await fetcher.GET('/tasks', {
     user_id: user._id,
@@ -60,7 +59,7 @@ export default async function Page() {
             },
             {
               name: 'Tenants',
-              value: tenants.length,
+              value: tenants?.length || 0,
               icon: IconUsers,
               href: '/dashboard/tenants',
             },
@@ -72,7 +71,7 @@ export default async function Page() {
             },
           ]}
         />
-        <div className='gap-8 grid grid-cols-3'>
+        <div className='grid gap-8 grid-cols-3'>
           <Panel className='col-span-2'>
             <PropertiesTable />
           </Panel>

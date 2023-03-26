@@ -12,7 +12,7 @@ import { LinkProps, UserProps } from './UI.props'
 export const Avatar = ({ user }: { user: UserProps }) => {
   return (
     <Image
-      className='h-10 w-10 object-cover rounded-full'
+      className='rounded-full object-cover h-10 w-10'
       src={user?.avatar_url}
       alt={user?.first_name + ' ' + user?.last_name + ' Avatar'}
       height='32'
@@ -41,14 +41,14 @@ export const Navigation = ({
   mobile = false,
 }: {
   user: UserProps
-  current: string
+  current?: string
   mobile?: boolean
 }) => {
   const links: LinkProps[] = generateLinks(user)
 
   if (mobile) {
     return (
-      <div className='space-y-1 px-2 py-3 sm:px-3'>
+      <div className='space-y-1 py-3 px-2 sm:px-3'>
         {links.map((item: LinkProps, index: number) => {
           const active: boolean = item.href == current
 
@@ -74,7 +74,7 @@ export const Navigation = ({
 
   return (
     <div className='hidden md:block'>
-      <div className='ml-10 flex items-baseline space-x-4'>
+      <div className='flex space-x-4 ml-10 items-baseline'>
         {links.map((item: LinkProps, index: number) => {
           const active: boolean = item.href == current
 
