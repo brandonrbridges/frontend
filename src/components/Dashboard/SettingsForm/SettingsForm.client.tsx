@@ -50,13 +50,13 @@ export const PhotoUpload = ({ user }) => {
             src={user.avatar_url}
             alt={`${user.first_name} ${user.last_name} Avatar`}
             fill
-            className='object-cover rounded-full'
+            className='rounded-full object-cover'
           />
         )}
       </div>
       <input
         type='file'
-        className='bg-white rounded-md font-semibold shadow-sm ring-inset text-sm ml-5 py-1.5 px-2.5 ring-1 ring-gray-300 text-gray-900 hidden hover:bg-gray-50'
+        className='hidden'
         ref={photoRef}
         onChange={({ target: { files } }) => files?.length && handlePhotoUpload(files[0])}
       />

@@ -14,11 +14,14 @@ import { Controller, useForm } from 'react-hook-form'
 import { fetcher } from '@/helpers'
 import Image from 'next/image'
 import Button from '@/components/Button'
+import { toast } from 'react-toastify'
 
 const TenantSearch = () => {
   const [search, setSearch] = useState('')
   const [results, setResults] = useState<any>([])
   const debounced = useDebounce(search, 750)
+
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -26,7 +29,20 @@ const TenantSearch = () => {
     },
   })
 
-  const submit = (data: any) => {}
+  const submit = (data: any) => {
+    toast.promise(
+      new Promise<boolean>((resolve) =>
+        setTimeout(() => {
+          resolve(true)
+        }, 1000)
+      ),
+      {
+        pending: 'Searching...',
+        success: 'Search complete',
+        error: 'Search failed',
+      }
+    )
+  }
 
   const handleSearch = async (e: any) => {
     const { value } = e.target
@@ -72,7 +88,11 @@ const TenantSearch = () => {
                   <p className='text-xs'>{result.email}</p>
                 </div>
                 <div className='ml-auto'>
-                  <Button>Invite {result.first_name}</Button>
+                  {!showConfirm ? (
+                    <Button onClick={() => setShowConfirm(true)}>Invite {result.first_name}</Button>
+                  ) : (
+                    <Button type='submit'>Confirm</Button>
+                  )}
                 </div>
               </div>
             </div>
