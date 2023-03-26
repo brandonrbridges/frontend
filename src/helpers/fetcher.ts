@@ -30,7 +30,7 @@ const POST = async (url: string, body: object): Promise<object> => {
   return await handleResponse(response)
 }
 
-const PATCH = async (url: string, body: object, opts?: { newURL: string }): Promise<object> => {
+const PATCH = async (url: string, body: object): Promise<object> => {
   const options = {
     method: 'PATCH',
     headers: {
@@ -39,7 +39,7 @@ const PATCH = async (url: string, body: object, opts?: { newURL: string }): Prom
     body: JSON.stringify(body),
   }
 
-  const response = await fetch(opts?.newURL || HOST + url, options)
+  const response = await fetch(HOST + url, options)
 
   return await handleResponse(response)
 }
