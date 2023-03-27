@@ -30,8 +30,6 @@ const DocumentUploader = ({ id, user_id }: DocumentUploaderProps) => {
 
     const form = new FormData()
     form.append('file', file)
-    form.append('property_id', id)
-    form.append('user_id', user_id)
 
     toast
       .promise(fetcher.UPLOAD(`/documents/upload`, form), {

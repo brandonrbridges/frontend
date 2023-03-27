@@ -29,11 +29,13 @@ async function getData(id) {
     property_id: id,
   })
 
-  return { user, property, tasks }
+  const tenancy = await fetcher.GET(`/tenancies/property/${id}`)
+
+  return { user, property, tasks, tenancy }
 }
 
 export default async function Page({ params }) {
-  const { user, property, tasks } = await getData(params.id)
+  const { user, property, tasks, tenancy } = await getData(params.id)
 
   return (
     <>
@@ -44,6 +46,13 @@ export default async function Page({ params }) {
           </Panel>
         </div>
         <div className='space-y-6 col-span-2'>
+          {tenancy && (
+            <Panel>
+              <p>Active Tenancy</p>
+              <p>Status: {tenancy.status}</p>
+              <p>Status: {tenancy.tenant.first_name}</p>
+            </Panel>
+          )}
           {user._id !== property.user._id && <TenantCard user={property.user} />}
           {property.tenant ? (
             <>
@@ -53,7 +62,7 @@ export default async function Page({ params }) {
           ) : (
             <>
               <Panel>
-                <TenantSearch />
+                <TenantSearch property_id={property._id} landlord_id={property.user_id} />
               </Panel>
             </>
           )}

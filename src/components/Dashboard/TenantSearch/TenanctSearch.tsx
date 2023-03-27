@@ -3,20 +3,33 @@
 // React
 import { useEffect, useState } from 'react'
 
+// Next
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+
+// Helpers
+import { fetcher } from '@/helpers'
+
 // Hooks
 import { useDebounce } from '@/hooks'
 
 // Components
+import Button from '@/components/Button'
 import { TextInput } from '@/components/Form'
 
 // Modules
 import { Controller, useForm } from 'react-hook-form'
-import { fetcher } from '@/helpers'
-import Image from 'next/image'
-import Button from '@/components/Button'
 import { toast } from 'react-toastify'
 
-const TenantSearch = () => {
+const TenantSearch = ({
+  property_id,
+  landlord_id,
+}: {
+  property_id: string
+  landlord_id: string
+}) => {
+  const router = useRouter()
+
   const [search, setSearch] = useState('')
   const [results, setResults] = useState<any>([])
   const debounced = useDebounce(search, 750)
@@ -28,6 +41,30 @@ const TenantSearch = () => {
       search: '',
     },
   })
+
+  const handleInvite = async (tenant_id: string) => {
+    toast
+      .promise(
+        fetcher.POST(`/tenancies`, {
+          property_id,
+          tenant_id,
+        }),
+        {
+          pending: 'Inviting...',
+          success: 'Invited',
+          error: 'Failed to invite',
+        }
+      )
+      .finally(() => {
+        router.refresh()
+      })
+  }
+
+  const handleSearch = async (e: any) => {
+    const { value } = e.target
+
+    setSearch(value)
+  }
 
   const submit = (data: any) => {
     toast.promise(
@@ -42,12 +79,6 @@ const TenantSearch = () => {
         error: 'Search failed',
       }
     )
-  }
-
-  const handleSearch = async (e: any) => {
-    const { value } = e.target
-
-    setSearch(value)
   }
 
   useEffect(() => {
@@ -91,7 +122,7 @@ const TenantSearch = () => {
                   {!showConfirm ? (
                     <Button onClick={() => setShowConfirm(true)}>Invite {result.first_name}</Button>
                   ) : (
-                    <Button type='submit'>Confirm</Button>
+                    <Button onClick={() => handleInvite(result._id)}>Confirm</Button>
                   )}
                 </div>
               </div>
