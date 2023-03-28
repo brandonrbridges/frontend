@@ -3,6 +3,7 @@ import AIAssistant from './AIAssistant'
 import * as Charts from './Charts'
 import DocumentItem from './DocumentItem'
 import DocumentUploader from './DocumentUploader'
+import Navigation from './Navigation'
 import PageNavigation from './PageNavigation'
 import Panel from './Panel'
 import PropertiesTable from './PropertiesTable'
@@ -26,6 +27,7 @@ export {
   Charts,
   DocumentItem,
   DocumentUploader,
+  Navigation,
   PageNavigation,
   Panel,
   PropertiesTable,
