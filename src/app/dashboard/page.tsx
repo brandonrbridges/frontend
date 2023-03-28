@@ -11,6 +11,7 @@ import { Panel, PropertiesTable, Stats } from '@/components/Dashboard'
 
 // Icons
 import { IconBuilding, IconChecklist, IconUsers } from '@tabler/icons-react'
+import Table from '@/components/Table'
 
 async function getData() {
   const { user } = await getServerSession(authOptions)
@@ -72,6 +73,12 @@ export default async function Page() {
           ]}
         />
         <div className='grid gap-8 grid-cols-3'>
+          <Panel className='col-span-full'>
+            <p className='text-sm mb-4 text-gray-500 italic'>
+              This is a test reusable table. Please ignore this.
+            </p>
+            <Table />
+          </Panel>
           <Panel className='col-span-2'>
             <PropertiesTable />
           </Panel>

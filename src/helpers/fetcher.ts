@@ -88,7 +88,10 @@ const handleResponse = async (response: Response) => {
   if (!response.ok) {
     const error = (data && data.message) || response.statusText
 
-    throw new Error(error)
+    return {
+      error,
+      status: response.status,
+    }
   }
 
   if (!data) {
