@@ -86,13 +86,13 @@ const handleResponse = async (response: Response) => {
   const data = await response.json()
 
   if (!response.ok) {
-    const error = response.statusText
+    const error = (data && data.message) || response.statusText
 
     throw new Error(error)
   }
 
   if (!data) {
-    return
+    return null
   }
 
   return data
