@@ -30,7 +30,7 @@ export const PhotoUpload = ({ user }) => {
     form.append('file', file)
 
     toast
-      .promise(fetcher.UPLOAD(`/users/${user._id}/upload-avatar`, form), {
+      .promise(fetcher.UPLOAD(`/upload/avatar?user_id=${user._id}`, form), {
         pending: 'Uploading photo...',
         success: 'Photo uploaded successfully!',
         error: 'Something went wrong. Please try again.',

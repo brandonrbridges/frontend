@@ -6,7 +6,12 @@ const nextConfig = {
   },
   images: {
     dangerouslyAllowSVG: true,
-    domains: ['images.unsplash.com', 'storage.googleapis.com', 'tailwindui.com'],
+    domains: [
+      'cdn.hello-home.app',
+      'images.unsplash.com',
+      'storage.googleapis.com',
+      'tailwindui.com',
+    ],
   },
   typescript: {
     ignoreBuildErrors: true,
