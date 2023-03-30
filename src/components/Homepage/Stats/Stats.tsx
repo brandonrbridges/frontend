@@ -3,11 +3,11 @@ const Stats = () => {
     <div className='mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8'>
       <div className='mx-auto max-w-2xl lg:mx-0'>
         <h2 className='font-bold tracking-tight text-3xl text-gray-900 sm:text-4xl'>
-          With our user-friendly dashboard, you can easily monitor progress and keep an eye on all
-          your properties
+          Efficiently Oversee Your Properties with Our Intuitive Dashboard
         </h2>
         <p className='mt-6 text-base text-gray-600 leading-7'>
-          Focus on the things that matter to you and your tenants. Let us take care of the rest.
+          Concentrate on the priorities that matter most to you and your tenants while our platform
+          handles the intricacies of property management with ease.
         </p>
       </div>
       <div className='flex flex-col mx-auto mt-16 max-w-2xl gap-8 lg:flex-row lg:max-w-none lg:mx-0 lg:mt-20 lg:items-end'>
@@ -18,7 +18,7 @@ const Stats = () => {
               Users on the platform
             </p>
             <p className='mt-2 text-base text-gray-600 leading-7'>
-              Between Landlords and Tenants, we have over 250,000 users on the platform.
+              Between Landlords and Tenants, we have over 250,000 users on the platform
             </p>
           </div>
         </div>
@@ -29,8 +29,7 @@ const Stats = () => {
               Collected in rent last year
             </p>
             <p className='mt-2 text-base text-gray-400 leading-7'>
-              Landlords have secured over £1.2 million automatically collected in rent last year via
-              Hello Home.
+              Landlords have secured over £1.2 million automatically collected in rent last year
             </p>
           </div>
         </div>
@@ -41,7 +40,7 @@ const Stats = () => {
               Tasks handled by our platform
             </p>
             <p className='mt-2 text-base text-indigo-200 leading-7'>
-              Our Tenants and Landlords have completed over 800,000 tasks on the platform.
+              Our Tenants and Landlords have completed over 800,000 tasks on the platform
             </p>
           </div>
         </div>

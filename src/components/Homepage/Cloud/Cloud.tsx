@@ -5,11 +5,12 @@ const Cloud = () => {
     <div className='mx-auto mt-32 max-w-7xl sm:mt-40 sm:px-6 lg:px-8'>
       <div className='bg-gray-900 text-center py-24 px-6 shadow-2xl relative isolate overflow-hidden sm:rounded-3xl sm:px-16'>
         <h2 className='font-bold mx-auto text-white tracking-tight max-w-2xl text-3xl sm:text-4xl'>
-          Our users love us
+          Customer Satisfaction at the Forefront
         </h2>
         <p className='mx-auto max-w-xl mt-6 text-lg text-gray-300 leading-8'>
-          We have over 250,000 users on the platform - and they love us. Here are just some of the
-          companies utilising Hello Home.
+          With a thriving community of over 250,000 satisfied users, Hello Home is the platform of
+          choice for property management. Discover some of the esteemed companies harnessing the
+          power of Hello Home.
         </p>
         <div className='mx-auto max-w-lg mt-20 grid gap-x-8 gap-y-12 grid-cols-4 items-center sm:max-w-xl sm:gap-x-10 sm:gap-y-14 sm:grid-cols-6 lg:max-w-4xl lg:grid-cols-5'>
           <Image

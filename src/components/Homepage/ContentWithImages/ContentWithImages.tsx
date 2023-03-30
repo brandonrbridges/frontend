@@ -7,19 +7,19 @@ const ContentWithImages = () => {
         <div className='mx-auto max-w-2xl grid gap-x-12 gap-y-16 grid-cols-1 lg:flex-none lg:min-w-full lg:max-w-none lg:mx-0 lg:gap-y-8'>
           <div className='lg:max-w-lg lg:w-full lg:pb-8 lg:col-end-1'>
             <h2 className='font-bold tracking-tight text-3xl text-gray-900 sm:text-4xl'>
-              With our Home Management Platform, managing your properties is easy
+              Effortless Property Management with Our Comprehensive Platform
             </h2>
             <ul className='space-y-1 mt-6 text-xl text-gray-600 leading-8'>
-              <li>Automatic Rent Collection</li>
+              <li>Automated Rent Collection</li>
               <li>Real-time Task Management</li>
-              <li>Fully-equipped Accounting</li>
+              <li>All-inclusive Accounting</li>
               <li>Secure Document Storage</li>
-              <li>Powerful Analytics</li>
-              <li>AI Assistant</li>
+              <li>Insightful Analytics</li>
+              <li>AI-Enhanced Assistance</li>
             </ul>
             <p className='mt-6 text-base text-gray-600 leading-7'>
-              We understand the challenges of managing properties, so our platform is designed to
-              help you stay organized and on top of your tasks.
+              Recognizing the complexities in property management, our platform is tailored to
+              streamline your processes, ensuring organization and task efficiency at all times.
             </p>
           </div>
           <div className='flex flex-wrap gap-6 items-start justify-end sm:gap-8 lg:contents'>

@@ -7,6 +7,7 @@ import {
   Hero,
   Stats,
 } from '@/components/Homepage'
+import Pricing from '@/components/Pricing'
 
 export default function Example() {
   return (
@@ -18,11 +19,6 @@ export default function Example() {
         {/* Hero section */}
         <Hero />
 
-        {/* Timeline section */}
-
-        {/* Logo cloud */}
-        <Cloud />
-
         {/* Content section */}
         <ContentWithImages />
 
@@ -31,6 +27,12 @@ export default function Example() {
 
         {/* Content section */}
         <ContentWithList />
+
+        {/* Pricing */}
+        <Pricing />
+
+        {/* Logo cloud */}
+        <Cloud />
       </main>
 
       {/* Footer */}
