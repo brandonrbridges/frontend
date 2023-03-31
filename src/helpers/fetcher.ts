@@ -83,22 +83,33 @@ const UPLOAD = async (url: string, body: FormData): Promise<object> => {
 }
 
 const handleResponse = async (response: Response) => {
-  const data = await response.json()
-
   if (!response.ok) {
-    const error = (data && data.message) || response.statusText
+    let error: string
+    let status: number
+
+    if (response.headers.get('Content-Type')?.includes('application/json')) {
+      const data = await response.json()
+      error = (data && data.message) || response.statusText
+      status = response.status
+    } else {
+      error = response.statusText
+      status = response.status
+    }
 
     return {
       error,
-      status: response.status,
+      status,
     }
   }
 
-  if (!data) {
-    return null
+  if (
+    response.headers.get('Content-Type')?.includes('application/json') &&
+    response.status !== 204
+  ) {
+    return await response.json()
   }
 
-  return data
+  return null
 }
 
 const fetcher = {

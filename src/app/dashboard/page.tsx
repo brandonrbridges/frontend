@@ -7,11 +7,18 @@ import { fetcher } from '@/helpers'
 
 // Components
 import Alert from '@/components/Alert'
-import { Panel, PropertiesTable, PropertyInfo, Stats } from '@/components/Dashboard'
+import {
+  Panel,
+  PropertiesTable,
+  PropertyInfo,
+  Stats,
+  TenantCard,
+  TenantInvite,
+} from '@/components/Dashboard'
+import Table from '@/components/Table'
 
 // Icons
 import { IconBuilding, IconChecklist, IconUsers } from '@tabler/icons-react'
-import Table from '@/components/Table'
 
 async function getData() {
   const { user } = await getServerSession(authOptions)
@@ -54,7 +61,7 @@ export default async function Page() {
           statistics={[
             {
               name: 'Properties',
-              value: properties.length,
+              value: properties?.length || 0,
               icon: IconBuilding,
               href: '/dashboard/properties',
             },
@@ -66,7 +73,7 @@ export default async function Page() {
             },
             {
               name: 'Tasks',
-              value: tasks.length,
+              value: tasks?.length || 0,
               icon: IconChecklist,
               href: '/dashboard/tasks',
             },
@@ -90,17 +97,31 @@ export default async function Page() {
   if (user.roles.includes('tenant')) {
     const property = properties[0]
 
+    if (!property) {
+      return (
+        <>
+          <Alert
+            type='danger'
+            title='No Property Assigned'
+            description='You do not have a property assigned.'
+          />
+        </>
+      )
+    }
+
     return (
       <>
-        {property.status == 'waiting' && (
-          <Panel>
-            <h3 className='h4 mb-2'>Hello {user.first_name} 👋🏻</h3>
-            You have been invited to join {property.address.line_1}. Would you like to accept?
-          </Panel>
-        )}
-        <Panel>
-          <PropertyInfo property={property} />
-        </Panel>
+        {property.status == 'waiting' && <TenantInvite user={user} property={property} />}
+        <div className='grid gap-8 grid-cols-3'>
+          <div className='col-span-2'>
+            <Panel>
+              <PropertyInfo property={property} />
+            </Panel>
+          </div>
+          <div className='space-y-8'>
+            <TenantCard user={property.tenant} />
+          </div>
+        </div>
       </>
     )
   }

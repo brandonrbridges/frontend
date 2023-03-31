@@ -18,6 +18,7 @@ import TaskUpdate from './TaskUpdate'
 import TaskUpdateForm from './TaskUpdateForm'
 import TenantCard from './TenantCard'
 import TenantGrid from './TenantGrid'
+import TenantInvite from './TenantInvite'
 import TenantSearch from './TenantSearch'
 import UI from './UI'
 
@@ -42,6 +43,7 @@ export {
   TaskUpdateForm,
   TenantCard,
   TenantGrid,
+  TenantInvite,
   TenantSearch,
   UI,
 }
