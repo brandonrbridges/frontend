@@ -32,7 +32,7 @@ const AIAssistant = ({ user }) => {
   const submit = async (data: PromptProps) => {
     const { prompt } = data
 
-    if (!user.roles.includes('admin'))
+    if (!user.roles.includes('admin') || !user.roles.includes('support'))
       return setResponse(['This feature is going to be enabled soon.'])
 
     const response: any = await fetcher.POST('/ai', {

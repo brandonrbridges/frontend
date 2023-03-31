@@ -7,7 +7,7 @@ import { fetcher } from '@/helpers'
 
 // Components
 import Alert from '@/components/Alert'
-import { Panel, PropertiesTable, Stats } from '@/components/Dashboard'
+import { Panel, PropertiesTable, PropertyInfo, Stats } from '@/components/Dashboard'
 
 // Icons
 import { IconBuilding, IconChecklist, IconUsers } from '@tabler/icons-react'
@@ -92,7 +92,15 @@ export default async function Page() {
 
     return (
       <>
-        <Panel>{property.address.line_1}</Panel>
+        {property.status == 'waiting' && (
+          <Panel>
+            <h3 className='h4 mb-2'>Hello {user.first_name} 👋🏻</h3>
+            You have been invited to join {property.address.line_1}. Would you like to accept?
+          </Panel>
+        )}
+        <Panel>
+          <PropertyInfo property={property} />
+        </Panel>
       </>
     )
   }

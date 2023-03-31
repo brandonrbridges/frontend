@@ -142,14 +142,15 @@ const Navigation = ({ user }) => {
                 </button>
               </div>
               <div className='space-y-1 mt-3 px-2'>
-                {user.roles.includes('admin') && (
-                  <Link
-                    href='admin'
-                    className='rounded-md font-medium text-base py-2 px-3 text-gray-400 block hover:bg-gray-700 hover:text-white'
-                  >
-                    Admin Panel
-                  </Link>
-                )}
+                {user.roles.includes('admin') ||
+                  (user.roles.includes('support') && (
+                    <Link
+                      href='admin'
+                      className='rounded-md font-medium text-base py-2 px-3 text-gray-400 block hover:bg-gray-700 hover:text-white'
+                    >
+                      Admin Panel
+                    </Link>
+                  ))}
                 {userNavigation.map((item, index) => (
                   <Link
                     key={index}
