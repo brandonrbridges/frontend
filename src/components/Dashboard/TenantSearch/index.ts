@@ -1,3 +1,3 @@
-import TenantSearch from './TenanctSearch'
+import TenantSearch from './TenantSearch'
 
 export default TenantSearch

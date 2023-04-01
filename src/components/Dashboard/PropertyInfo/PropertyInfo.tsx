@@ -14,11 +14,21 @@ export default async function PropertyInfo({ property }) {
         <dl className='grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2'>
           <div className='sm:col-span-1'>
             <dt className='font-medium text-sm text-gray-500'>Rent</dt>
-            <dd className='mt-1 text-sm text-gray-900'>{property.rent}</dd>
+            <dd className='mt-1 text-sm text-gray-900'>
+              {new Intl.NumberFormat('en-GB', {
+                style: 'currency',
+                currency: 'GBP',
+              }).format(property.rent)}
+            </dd>
           </div>
           <div className='sm:col-span-1'>
             <dt className='font-medium text-sm text-gray-500'>Deposit</dt>
-            <dd className='mt-1 text-sm text-gray-900'>{property.deposit}</dd>
+            <dd className='mt-1 text-sm text-gray-900'>
+              {new Intl.NumberFormat('en-GB', {
+                style: 'currency',
+                currency: 'GBP',
+              }).format(property.deposit)}
+            </dd>
           </div>
         </dl>
       </div>

@@ -30,11 +30,14 @@ export const Table = ({ properties }: { properties: Property[] }) => {
   )
 }
 
-export const TableDescription = () => {
+export const TableDescription = ({ title, description, actions }) => {
   return (
-    <div className='sm:flex-auto'>
-      <h1 className='font-semibold text-base text-gray-900 leading-6'>Properties</h1>
-      <p className='mt-2 text-sm text-gray-700'>A list of all the properties that you manage.</p>
+    <div className='sm:flex sm:items-center'>
+      <div className='sm:flex-auto'>
+        {title && <h1 className='font-semibold text-base text-gray-900 leading-6'>{title}</h1>}
+        {description && <p className='mt-2 text-sm text-gray-700'>{description}</p>}
+      </div>
+      <div className='mt-4 sm:flex-none sm:mt-0 sm:ml-16'>{actions}</div>
     </div>
   )
 }

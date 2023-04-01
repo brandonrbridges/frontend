@@ -11,23 +11,24 @@ import { fetcher, formatDate } from '@/helpers'
 
 // Server Components
 // import Badge from '@/components/Badge'
-import { TaskStatus } from './TaskList.server'
+import { AddButton, TaskStatus } from './TaskList.server'
 
 // Icons
 import { IconChevronRight, IconHome } from '@tabler/icons-react'
+import { TableDescription } from '../PropertiesTable/PropertiesTable.server'
 
 export default async function TaskList({ tasks }: { tasks: any }) {
   return (
     <>
-      <div className='mb-8 sm:flex sm:items-center'>
-        <div className='sm:flex-auto'>
-          <h1 className='font-semibold text-base text-gray-900 leading-6'>Tasks</h1>
-          <p className='mt-2 text-sm text-gray-700'>
-            A list of all the tasks for the properties that you manage.
-          </p>
-        </div>
-        <div className='mt-4 sm:flex-none sm:mt-0 sm:ml-16'>{/* <AddPropertyButton /> */}</div>
-      </div>
+      <TableDescription
+        title='Tasks'
+        description='Easily manage your tasks for your properties.'
+        actions={
+          <>
+            <AddButton />
+          </>
+        }
+      />
       <ul role='list' className='divide-y divide-gray-200'>
         {tasks.length === 0 && <li className='text-sm text-gray-500'>There are no open tasks</li>}
 

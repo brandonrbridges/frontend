@@ -40,6 +40,11 @@ export const handleVariant = (variant: string) => {
         background: 'bg-gray-800',
         color: 'text-gray-100',
       }
+    case 'available':
+      return {
+        background: 'bg-sky-100',
+        color: 'text-sky-800',
+      }
     case 'occupied':
       return {
         background: 'bg-emerald-100',

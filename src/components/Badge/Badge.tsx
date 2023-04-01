@@ -12,7 +12,7 @@ export default function Badge({
 }) {
   const { background, color } = handleVariant(variant)
 
-  children = children && children.replaceAll('_', ' ').toUpperCase()
+  children = children && typeof children == 'string' && children.replaceAll('_', ' ').toUpperCase()
 
   return (
     <span

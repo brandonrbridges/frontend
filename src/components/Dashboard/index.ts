@@ -3,6 +3,7 @@ import AIAssistant from './AIAssistant'
 import * as Charts from './Charts'
 import DocumentItem from './DocumentItem'
 import DocumentUploader from './DocumentUploader'
+import EvictButton from './EvictButton'
 import Navigation from './Navigation'
 import PageNavigation from './PageNavigation'
 import Panel from './Panel'
@@ -12,6 +13,7 @@ import PropertyInfo from './PropertyInfo'
 import SettingsForm from './SettingsForm'
 import Stats from './Stats'
 import TaskFilter from './TaskFilter'
+import TaskForm from './TaskForm'
 import TaskList from './TaskList'
 import TaskTimeline from './TaskTimeline'
 import TaskUpdate from './TaskUpdate'
@@ -28,6 +30,7 @@ export {
   Charts,
   DocumentItem,
   DocumentUploader,
+  EvictButton,
   Navigation,
   PageNavigation,
   Panel,
@@ -37,6 +40,7 @@ export {
   SettingsForm,
   Stats,
   TaskFilter,
+  TaskForm,
   TaskList,
   TaskTimeline,
   TaskUpdate,

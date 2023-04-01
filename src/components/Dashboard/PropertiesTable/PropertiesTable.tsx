@@ -15,12 +15,15 @@ const PropertiesTable = async () => {
 
   return (
     <div className=''>
-      <div className='sm:flex sm:items-center'>
-        <TableDescription />
-        <div className='mt-4 sm:flex-none sm:mt-0 sm:ml-16'>
-          <AddButton />
-        </div>
-      </div>
+      <TableDescription
+        title='Properties'
+        description='Easily manage all of your properties.'
+        actions={
+          <>
+            <AddButton />
+          </>
+        }
+      />
       <Suspense fallback={<div>Loading...</div>}>
         <div className='mt-8 flow-root'>
           <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8'>

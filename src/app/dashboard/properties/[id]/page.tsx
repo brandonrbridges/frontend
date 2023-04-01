@@ -7,6 +7,7 @@ import { fetcher } from '@/helpers'
 
 // Components
 import {
+  EvictButton,
   PageNavigation,
   Panel,
   PropertiesTable,
@@ -57,7 +58,7 @@ export default async function Page({ params }) {
           {property.tenant ? (
             <>
               <TenantCard user={property.tenant} />
-              <Button className='w-full'>Evict {property.tenant.first_name}</Button>
+              <EvictButton property={property} />
             </>
           ) : (
             <>
